@@ -35,6 +35,7 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
             
             if(agent.desiredVelocity.sqrMagnitude >= 0.1f)
             {
+                // desiredVelocity : 장애물을 피하는 것 까지 고려한 속도
                 Vector3 direction = agent.desiredVelocity;
                 Quaternion targetAngle = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Slerp(transform.rotation,targetAngle,Time.deltaTime*8);

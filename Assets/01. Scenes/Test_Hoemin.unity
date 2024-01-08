@@ -466,6 +466,8 @@ MonoBehaviour:
     profileImg: {fileID: 0}
     physicalAtk: 0
     abilityAtk: 0
+    phsicalDef: 0
+    magicalResistance: 0
     abilityHaste: 0
     moveSpeed: 0
     criticalChance: 0

@@ -6,7 +6,10 @@ public abstract class BasicState
 {
     public IStateMachine sm;
 
-    public virtual void StateInit(IStateMachine sm) { this.sm = sm; }
+    public virtual void StateInit(IStateMachine sm) 
+    {
+        this.sm = sm;
+    }
     public virtual void Enter() { }
     public abstract void Update();
     public virtual void Exit() { }

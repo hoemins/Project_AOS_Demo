@@ -1,3 +1,4 @@
+using Hoemin;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,9 +27,10 @@ public class ChampionInfo
     public uint AbilityAtk { get { return abilityAtk; }}
     public uint PhsicalDef { get { return phsicalDef; }}
     public uint MagicalResistance { get { return magicalResistance; }}  
-    public float MoveSpeed { get {  return moveSpeed; }}
+    public float MoveSpeed { get {  return moveSpeed; } set { moveSpeed = value; } }
     public float CriticalChance { get { return criticalChance; }}
     public uint AbilityHaste { get { return abilityHaste; }}
+
 }
 
 public enum CHAMPION_STATE
@@ -39,14 +41,45 @@ public enum CHAMPION_STATE
 public class Champion : MonoBehaviour
 {
     [SerializeField] ChampionInfo championinfo;
+    [SerializeField] CHAMPION_STATE curState;
+
+    /// <summary>
+    /// 애니메이션과 상태 전환용 FSM
+    /// </summary>
     StateMachine<Champion> stateMachine;
 
+    private ChampionMoveController moveController;
+    
+    public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } } // 현재 상태 변수
+    public ChampionMoveController MoveController { get { return moveController; } }
+
+    // 문제점 : Awake 함수 호출 순서 때문에 NullRef 에러 발생
+    // 해결 : ProjectSetting -> Script Excution order 탭에서 호출 순서 커스텀
     private void Awake()
     {
-        StateInit();
+        championinfo = new ChampionInfo();
+        championinfo.MoveSpeed = 5f;
+        moveController = GetComponent<ChampionMoveController>();
+        InitChampionInfo();
     }
 
-    private void StateInit()
+    private void Start()
+    {
+        InitState();
+    }
+    /// <summary>
+    /// 챔피언 스탯 초기화
+    /// </summary>
+    private void InitChampionInfo()
+    {
+        championinfo.Level = 1;
+        MoveController.Agent.speed = championinfo.MoveSpeed;
+    }
+
+    /// <summary>
+    /// 상태 머신 초기화
+    /// </summary>
+    private void InitState()
     {
         stateMachine = new StateMachine<Champion>(this);
         stateMachine.AddState((int)CHAMPION_STATE.IDLE, new ChampionIdleState());
@@ -56,6 +89,7 @@ public class Champion : MonoBehaviour
         stateMachine.AddState((int)CHAMPION_STATE.SLOWDOWN, new ChampionSlowDownState());
         stateMachine.AddState((int)CHAMPION_STATE.AIRBORNE, new ChampionAirborneState());
         stateMachine.SetState((int)CHAMPION_STATE.IDLE);
+        curState = CHAMPION_STATE.IDLE;
     }
 
     public void Update()

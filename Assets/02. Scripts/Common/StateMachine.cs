@@ -26,7 +26,7 @@ public class StateMachine<T> : IStateMachine where T : class
     {
         if (stateDic.ContainsKey(stateNum)) return;
         stateDic.Add(stateNum, state);
-        state.sm = this;
+        state.StateInit(this);
     }
 
     public void SetState(int stateNum)

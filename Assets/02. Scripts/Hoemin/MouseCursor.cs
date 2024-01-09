@@ -5,7 +5,9 @@ using UnityEngine;
 
 namespace Hoemin
 {
-
+    /// <summary>
+    /// 적절한 객체나 현 상태에 따른 마우스 커서 저장
+    /// </summary>
     public class MouseCursor : MonoBehaviour
     {
         [SerializeField] Texture2D arrowImg;

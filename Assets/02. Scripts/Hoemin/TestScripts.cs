@@ -23,7 +23,7 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
 
         private void Update()
         {
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(1))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if(Physics.Raycast(ray,out RaycastHit hitInfo))

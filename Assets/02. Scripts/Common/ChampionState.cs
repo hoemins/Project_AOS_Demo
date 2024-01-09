@@ -6,12 +6,12 @@ public class ChampionIdleState : ChampionState
 {
     public override void Enter()
     {
-
+        Debug.Log("Champ IDle");
     }
 
     public override void Update()
     {
-
+        
     }
 
     public override void Exit()

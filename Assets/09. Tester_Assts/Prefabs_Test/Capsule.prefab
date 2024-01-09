@@ -110,8 +110,9 @@ GameObject:
   - component: {fileID: 360665268026369585}
   - component: {fileID: 360665268026369586}
   - component: {fileID: 360665268026369485}
-  - component: {fileID: 360665268026369486}
   - component: {fileID: 360665268026369484}
+  - component: {fileID: 360665268026369486}
+  - component: {fileID: 939692594824770473}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -222,19 +223,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &360665268026369486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 360665268026369587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bca47386a8d02943995e6a01a588555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  markerObject: {fileID: 1215210573372408, guid: e39e963e996a8834ca9a243f1a7a522a, type: 3}
 --- !u!95 &360665268026369484
 Animator:
   serializedVersion: 5
@@ -256,6 +244,42 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &360665268026369486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360665268026369587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bca47386a8d02943995e6a01a588555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markerObject: {fileID: 1215210573372408, guid: e39e963e996a8834ca9a243f1a7a522a, type: 3}
+--- !u!114 &939692594824770473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360665268026369587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad80fa7220d5c734eb947f547fc092bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  championinfo:
+    name: 
+    level: 0
+    profileImg: {fileID: 0}
+    physicalAtk: 0
+    abilityAtk: 0
+    phsicalDef: 0
+    magicalResistance: 0
+    abilityHaste: 0
+    moveSpeed: 0
+    criticalChance: 0
 --- !u!1001 &360665267906022596
 PrefabInstance:
   m_ObjectHideFlags: 0

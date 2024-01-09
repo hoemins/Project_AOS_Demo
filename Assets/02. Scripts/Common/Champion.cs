@@ -31,8 +31,35 @@ public class ChampionInfo
     public uint AbilityHaste { get { return abilityHaste; }}
 }
 
+public enum CHAMPION_STATE
+{
+    IDLE, MOVE, ATTACK, STUN, SLOWDOWN, AIRBORNE, DIE
+}
 
 public class Champion : MonoBehaviour
 {
     [SerializeField] ChampionInfo championinfo;
+    StateMachine<Champion> stateMachine;
+
+    private void Awake()
+    {
+        StateInit();
+    }
+
+    private void StateInit()
+    {
+        stateMachine = new StateMachine<Champion>(this);
+        stateMachine.AddState((int)CHAMPION_STATE.IDLE, new ChampionIdleState());
+        stateMachine.AddState((int)CHAMPION_STATE.MOVE, new ChampionMoveState());
+        stateMachine.AddState((int)CHAMPION_STATE.ATTACK, new ChampionAttackState());
+        stateMachine.AddState((int)CHAMPION_STATE.STUN, new ChampionStunState());
+        stateMachine.AddState((int)CHAMPION_STATE.SLOWDOWN, new ChampionSlowDownState());
+        stateMachine.AddState((int)CHAMPION_STATE.AIRBORNE, new ChampionAirborneState());
+        stateMachine.SetState((int)CHAMPION_STATE.IDLE);
+    }
+
+    public void Update()
+    {
+        stateMachine.Update();
+    }
 }

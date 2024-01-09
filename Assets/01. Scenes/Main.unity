@@ -47502,6 +47502,7 @@ GameObject:
   - component: {fileID: 1732040012}
   - component: {fileID: 1732040011}
   - component: {fileID: 1732040014}
+  - component: {fileID: 1732040015}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -47615,6 +47616,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1732040015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732040009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e3b1bc7953fd24dba50bbecc5b1873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1733004360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53789,7 +53802,7 @@ MonoBehaviour:
   - {fileID: 1367648774}
   enemyInfoImg: {fileID: 1902818200}
   enemyProfile: {fileID: 1892457024}
-  enemyInven: {fileID: 51559823}
+  enemyInven: {fileID: 51559827}
   enemyLevelText: {fileID: 632539539}
   myStatsText:
   - {fileID: 4913435938509554617}
@@ -53802,7 +53815,8 @@ MonoBehaviour:
   - {fileID: 8242820445053415874}
   myProfile: {fileID: 1844992541}
   myLevelText: {fileID: 1916400428}
-  myInven: {fileID: 1732040009}
+  myInven: {fileID: 1732040015}
+  myMoneyText: {fileID: 1920158402}
 --- !u!4 &1952874836
 Transform:
   m_ObjectHideFlags: 0

@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private uint money;
+    public uint Money { get { return money; } }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

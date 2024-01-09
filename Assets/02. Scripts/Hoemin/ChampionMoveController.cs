@@ -33,6 +33,7 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
                 {
                     agent.SetDestination(hitInfo.point);
                     GameObject marker = Instantiate(markerObject, hitInfo.point, markerObject.transform.localRotation);
+                    Destroy(marker, 1.5f);
                 }
             }
 

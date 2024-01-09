@@ -16,7 +16,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] TextMeshProUGUI[] enemyStatsText;
     [SerializeField] Image enemyInfoImg; // 적 챔피언 마우스 클릭 시 SetActive(true);
     [SerializeField] Image enemyProfile;
-    [SerializeField] GameObject enemyInven;
+    [SerializeField] Inventory enemyInven;
     [SerializeField] TextMeshProUGUI enemyLevelText;
 
 
@@ -24,7 +24,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] TextMeshProUGUI[] myStatsText;
     [SerializeField] Image myProfile;
     [SerializeField] TextMeshProUGUI myLevelText;
-    [SerializeField] GameObject myInven;
+    [SerializeField] Inventory myInven;
+    [SerializeField] TextMeshProUGUI myMoneyText;
 
     private void Update()
     {

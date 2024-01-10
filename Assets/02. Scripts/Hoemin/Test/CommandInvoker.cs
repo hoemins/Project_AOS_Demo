@@ -13,7 +13,7 @@ public class CommandInvoker
     }
 
     // 명령 인터페이스를 Stack 에 담아줌으로서 기록해둠
-    public void AddCommand(ICommand newCommand)
+    public void ExecuteCommand(ICommand newCommand)
     {
         newCommand.Execute();
         undoStack.Push(newCommand);

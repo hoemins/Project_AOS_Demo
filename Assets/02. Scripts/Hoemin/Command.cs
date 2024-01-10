@@ -6,7 +6,7 @@ namespace Hoemin
 {
     /*
      [To do]
-    1. DrawIndicator 클래스를 만들고 Skill 클래스가 이를 의존하도록 만들어 
+    1. IndicatorRenderer 클래스를 만들고 Skill 클래스가 이를 의존하도록 만들어 
         스킬 명령 클래스들이 Skill 클래스들을 의존하도록 할 것.
     2. 스킬 조준 및 발사, A 키 누를 시 공격하는 명령 구현
     3. Undo 메서드는 스킬 명령 클래스들이 의존하고있는 Skill 클래스에서

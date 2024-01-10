@@ -7,11 +7,13 @@ using UnityEngine;
 /// </summary>
 namespace Hoemin
 {
+    // 추상화된 Command
     public interface Command
     {
         void Execute();
     }
 
+    // ConcrateCommand
     public class QskillCommand : Hoemin.Command
     {
         
@@ -53,6 +55,7 @@ namespace Hoemin
         }
     }
 
+   
     public class RskillCommand : Hoemin.Command
     {
 
@@ -67,6 +70,8 @@ namespace Hoemin
         }
     }
 
+
+    // invoker 가 없는 상태
     public class Player : MonoBehaviour
     {
         public enum SKILL_BTN

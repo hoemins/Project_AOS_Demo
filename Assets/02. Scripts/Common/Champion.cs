@@ -42,14 +42,9 @@ public class Champion : MonoBehaviour
 {
     [SerializeField] ChampionInfo championinfo;
     [SerializeField] CHAMPION_STATE curState;
-
-    /// <summary>
-    /// 애니메이션과 상태 전환용 FSM
-    /// </summary>
+    ChampionMoveController moveController;
     StateMachine<Champion> stateMachine;
 
-    private ChampionMoveController moveController;
-    
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } } // 현재 상태 변수
     public ChampionMoveController MoveController { get { return moveController; } }
     public ChampionInfo ChampionInfo { get {  return championinfo; } }

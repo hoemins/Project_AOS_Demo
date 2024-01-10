@@ -52,6 +52,7 @@ public class Champion : MonoBehaviour
     
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } } // 현재 상태 변수
     public ChampionMoveController MoveController { get { return moveController; } }
+    public ChampionInfo ChampionInfo { get {  return championinfo; } }
 
     // 문제점 : Awake 함수 호출 순서 때문에 NullRef 에러 발생
     // 해결 : ProjectSetting -> Script Excution order 탭에서 호출 순서 커스텀

@@ -17,4 +17,6 @@ public class GameManager : Singleton<GameManager>
         // - 시간 변수를 사용하여 미니언 출현 주기 생성
         PlayTime += Time.deltaTime;
     }
+
+    
 }

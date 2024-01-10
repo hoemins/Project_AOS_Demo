@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 360665266598209942}
   - component: {fileID: 360665266598209943}
   - component: {fileID: 360665266598209944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,9 +113,9 @@ GameObject:
   - component: {fileID: 360665268026369484}
   - component: {fileID: 939692594824770473}
   - component: {fileID: 360665268026369486}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Champion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
     phsicalDef: 0
     magicalResistance: 0
     abilityHaste: 0
-    moveSpeed: 0
+    moveSpeed: 3.5
     criticalChance: 0
   curState: 0
 --- !u!114 &360665268026369486
@@ -288,13 +288,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 360665268026369487}
     m_Modifications:
+    - target: {fileID: 1210946835966984, guid: 140b8f2a72fd91e4d8c92f614f97e172, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518231813654078, guid: 140b8f2a72fd91e4d8c92f614f97e172, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1549672409025840, guid: 140b8f2a72fd91e4d8c92f614f97e172, type: 3}
       propertyPath: m_Name
       value: Marker 3
       objectReference: {fileID: 0}
     - target: {fileID: 1549672409025840, guid: 140b8f2a72fd91e4d8c92f614f97e172, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549672409025840, guid: 140b8f2a72fd91e4d8c92f614f97e172, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836333667945720, guid: 140b8f2a72fd91e4d8c92f614f97e172, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4060057600555218, guid: 140b8f2a72fd91e4d8c92f614f97e172, type: 3}
       propertyPath: m_RootOrder

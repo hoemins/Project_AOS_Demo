@@ -26,6 +26,46 @@ namespace Hoemin
         }
     }
 
+    public class WskillCommand : Hoemin.Command
+    {
+
+        public void Execute()
+        {
+            FireWSkill();
+        }
+
+        void FireWSkill()
+        {
+            Debug.Log("WSkill");
+        }
+    }
+    public class EskillCommand : Hoemin.Command
+    {
+
+        public void Execute()
+        {
+            FireESkill();
+        }
+
+        void FireESkill()
+        {
+            Debug.Log("ESkill");
+        }
+    }
+
+    public class RskillCommand : Hoemin.Command
+    {
+
+        public void Execute()
+        {
+            FireRSkill();
+        }
+
+        void FireRSkill()
+        {
+            Debug.Log("RSkill");
+        }
+    }
 
     public class Player : MonoBehaviour
     {
@@ -33,33 +73,15 @@ namespace Hoemin
         { Q_BTN, W_BTN, E_BTN, R_BTN, NONE }
 
         SKILL_BTN pressedBTN = SKILL_BTN.NONE;
-        Command btnQ;
+        Command btnQ,btnW,btnE,btnR;
+
         // Update is called once per frame
         void Update()
         {
-            if (IsPressed(SKILL_BTN.Q_BTN))
-                btnQ.Execute();
-            else if (IsPressed(SKILL_BTN.W_BTN)) FireWSkill();
-            else if (IsPressed(SKILL_BTN.E_BTN)) FireESkill();
-            else if (IsPressed(SKILL_BTN.R_BTN)) FireRSkill();
-
-        }
-
-        
-
-        void FireWSkill()
-        {
-            Debug.Log("WSkill");
-        }
-
-        void FireESkill()
-        {
-            Debug.Log("ESkill");
-        }
-
-        void FireRSkill()
-        {
-            Debug.Log("RSkill");
+            if (IsPressed(SKILL_BTN.Q_BTN)) btnQ.Execute();
+            else if (IsPressed(SKILL_BTN.W_BTN)) btnW.Execute();
+            else if (IsPressed(SKILL_BTN.E_BTN)) btnE.Execute();
+            else if (IsPressed(SKILL_BTN.R_BTN)) btnR.Execute();
         }
 
         bool IsPressed(SKILL_BTN btn)

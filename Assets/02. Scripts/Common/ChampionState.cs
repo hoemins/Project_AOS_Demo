@@ -17,10 +17,10 @@ public class ChampionIdleState : ChampionState
 
     public override void Exit()
     {
-       
-    }
+                
+    }           
 }
-
+                  
 public class ChampionMoveState : ChampionState
 {
     public override void Enter()

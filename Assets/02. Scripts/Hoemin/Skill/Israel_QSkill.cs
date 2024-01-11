@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
+using System.Reflection;
 
 public class Israel_QSkill : WaitSkill
 {
-    GameObject skillEffect;
+    SkillEffectHandler handler;
     Vector3 firePos;
-
     public Israel_QSkill(Champion owner) : base(owner) { }
 
 
@@ -18,10 +18,17 @@ public class Israel_QSkill : WaitSkill
         requiredLevel = 1;
         comsumeMP = 10;
         coolTime = 6f;
-        firePos = Owner.transform.position + Vector3.up; // offset 맞춰주기
+        firePos = Owner.gameObject.transform.position + Vector3.up; // offset 맞춰주기
     }
     public override void Fire()
     {
-        Debug.Log("이즈Q");
+        handler = Owner.gameObject.GetComponent<SkillEffectHandler>();
+
+        Type type = typeof(SkillEffectHandler);
+        MethodInfo methodInfo = type.GetMethod("CreateEffect");
+        FieldInfo fieldInfo = type.GetField("effectList");
+        fieldInfo.GetValue(handler);
+        methodInfo.Invoke(handler, null);
+       
     }
 }

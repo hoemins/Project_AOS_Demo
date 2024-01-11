@@ -13,9 +13,10 @@ public enum BUTTON
 // 커맨드 패턴의 Receiver 클래스
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] Champion champion;
+    
+    Champion champion;
     CommandInvoker invoker;
-    BUTTON pressedBtn = BUTTON.NONE;
+    [SerializeField] BUTTON pressedBtn = BUTTON.NONE;
     ICommand btnQ, btnW, btnE, btnR, btnD, btnF, btnA;
 
     public Champion Champion { get { return champion; } }

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Hoemin
 {
     /// <summary>
-    /// 적절한 객체나 현 상태에 따른 마우스 커서 저장
+    /// 적절한 객체나 현 상태에 따른 마우스 커서 저장 (Test 버전임)
     /// </summary>
     public class MouseCursor : MonoBehaviour
     {

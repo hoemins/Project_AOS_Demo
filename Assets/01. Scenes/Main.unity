@@ -57603,6 +57603,10 @@ PrefabInstance:
       propertyPath: effectList.Array.data[0]
       value: 
       objectReference: {fileID: 1519322442116508, guid: 2ad01737a079ffa4dba46f20712e5807, type: 3}
+    - target: {fileID: 360665266598209944, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 360665268026369487, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -57645,6 +57649,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 360665268026369487, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 360665268026369586, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 360665268026369587, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}

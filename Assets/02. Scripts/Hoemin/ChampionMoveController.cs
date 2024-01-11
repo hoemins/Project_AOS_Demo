@@ -7,9 +7,12 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
 {
     public class ChampionMoveController : MonoBehaviour
     {
+        [Header("챔피언 이동")]
         [SerializeField] private GameObject markerObject;
         private const int rotSpeed = 8;
         NavMeshAgent agent;
+
+
 
         public NavMeshAgent Agent { get { return agent; }}
         private void Awake()
@@ -45,6 +48,8 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetAngle, Time.deltaTime * rotSpeed);
             }
         }
+
+
 
     }
 }

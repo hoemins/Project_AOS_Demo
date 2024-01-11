@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+// 경량해턴 쓸까여
 public abstract class Skill
 {
     private Sprite skillImg;

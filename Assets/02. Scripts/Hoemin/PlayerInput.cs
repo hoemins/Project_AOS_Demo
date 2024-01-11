@@ -44,6 +44,7 @@ public class PlayerInput : MonoBehaviour
         else if (IsPressed(BUTTON.A_BTN)) invoker.ExecuteCommand(btnA);
     }
 
+    
     bool IsPressed(BUTTON button)
     {
         pressedBtn = button;

@@ -111,8 +111,9 @@ GameObject:
   - component: {fileID: 360665268026369586}
   - component: {fileID: 360665268026369485}
   - component: {fileID: 360665268026369484}
-  - component: {fileID: 939692594824770473}
+  - component: {fileID: 1803336649373334497}
   - component: {fileID: 360665268026369486}
+  - component: {fileID: 1834852244}
   m_Layer: 8
   m_Name: Capsule
   m_TagString: Champion
@@ -244,7 +245,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &939692594824770473
+--- !u!114 &1803336649373334497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,21 +254,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 360665268026369587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad80fa7220d5c734eb947f547fc092bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 68c57d585f4a9d94298a355c081cb39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   championinfo:
-    name: 
-    level: 0
+    name: Israel
+    level: 1
     profileImg: {fileID: 0}
-    physicalAtk: 0
+    physicalAtk: 50
     abilityAtk: 0
-    phsicalDef: 0
-    magicalResistance: 0
+    phsicalDef: 30
+    magicalResistance: 15
+    physicalAtkDelay: 0
     abilityHaste: 0
     moveSpeed: 3.5
-    criticalChance: 0
+    criticalChance: 15
   curState: 0
+  moveController: {fileID: 360665268026369486}
 --- !u!114 &360665268026369486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +284,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   markerObject: {fileID: 1215210573372408, guid: e39e963e996a8834ca9a243f1a7a522a, type: 3}
+--- !u!114 &1834852244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360665268026369587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b812a53809e510d43be168bc673f4d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &360665267906022596
 PrefabInstance:
   m_ObjectHideFlags: 0

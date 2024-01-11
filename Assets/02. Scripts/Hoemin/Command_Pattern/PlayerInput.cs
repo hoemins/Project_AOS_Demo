@@ -13,7 +13,7 @@ public enum BUTTON
 // 커맨드 패턴의 Receiver 클래스
 public class PlayerInput : MonoBehaviour
 {
-    Champion champion;
+    [SerializeField] Champion champion;
     CommandInvoker invoker;
     BUTTON pressedBtn = BUTTON.NONE;
     ICommand btnQ, btnW, btnE, btnR, btnD, btnF, btnA;
@@ -42,8 +42,6 @@ public class PlayerInput : MonoBehaviour
                 waitForUseSkill = true;
                 Debug.Log(waitForUseSkill);
             }
-                
-            
         }
     }
 
@@ -125,6 +123,7 @@ public class PlayerInput : MonoBehaviour
         curUseSkill?.Fire();
         Debug.Log("UseSkill");
         waitForUseSkill = false;
+        CurUseSkill = null;
     }
 
     

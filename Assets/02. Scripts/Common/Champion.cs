@@ -40,38 +40,41 @@ public enum CHAMPION_STATE
     IDLE, MOVE, ATTACK, STUN, SLOWDOWN, AIRBORNE, DIE
 }
 
-public class Champion : MonoBehaviour
+public abstract class Champion : MonoBehaviour
 {
-    [SerializeField] ChampionInfo championinfo;
-    [SerializeField] CHAMPION_STATE curState;
-    ChampionMoveController moveController;
-    StateMachine<Champion> stateMachine;
+    [SerializeField] protected ChampionInfo championinfo;
+    [SerializeField] protected CHAMPION_STATE curState;
+    [SerializeField] protected ChampionMoveController moveController;
     [SerializeField] List<Skill> skillList;
+    private StateMachine<Champion> stateMachine;
+    private const int skillCount = 4;
 
+    //=============================프로퍼티======================================//
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } } // 현재 상태 변수
     public ChampionMoveController MoveController { get { return moveController; } }
     public ChampionInfo ChampionInfo { get {  return championinfo; } }
-
     public List<Skill> SkillList { get {  return skillList; } }
+    //===========================================================================//
 
     // 문제점 : Awake 함수 호출 순서 때문에 NullRef 에러 발생
     // 해결 : ProjectSetting -> Script Excution order 탭에서 호출 순서 커스텀
-    private void Awake()
+    public virtual void Awake()
     {
-        moveController = GetComponent<ChampionMoveController>();
-        InitChampionInfo();
+        skillList = new List<Skill>(skillCount);
         InitState();
+        InitChampionInfo();
     }
+
+
 
     /// <summary>
     /// 챔피언 스탯 초기화
     /// </summary>
     private void InitChampionInfo()
     {
-        championinfo = new ChampionInfo();
         championinfo.Level = 1;
-        championinfo.MoveSpeed = 5f;
-        MoveController.Agent.speed = championinfo.MoveSpeed;
+        championinfo.MoveSpeed = 4f;
+        //MoveController.Agent.speed = championinfo.MoveSpeed;
     }
 
     /// <summary>

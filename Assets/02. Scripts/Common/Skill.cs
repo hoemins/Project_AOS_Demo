@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+
 public abstract class Skill
 {
     public SkillType skillType;
@@ -13,12 +15,13 @@ public abstract class Skill
     protected uint requiredLevel;
     protected int comsumeMP;
     protected float coolTime;
+    private bool isCool;
 
     public IndicatorRenderer indicatorRenderer;
     Champion owner;
 
     public Champion Owner { get { return owner; } }
-  
+    public bool IsCool { get { return isCool; } set { isCool = value; } }
     public Skill(Champion owner)
     {
         this.owner = owner;
@@ -41,7 +44,7 @@ public abstract class WaitSkill : Skill
 
     public WaitSkill(Champion owner) : base(owner)
     {
-        skillType = SkillType.DIRECT;
+        skillType = SkillType.WAIT;
     }
 
 }

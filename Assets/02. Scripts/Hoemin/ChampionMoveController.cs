@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.AI;
 
 namespace Hoemin // 네임스페이스 구분하여 사용할 것
@@ -12,11 +13,12 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
         private const int rotSpeed = 8;
         NavMeshAgent agent;
 
-
+        private IObjectPool<Marker> markerPool;
 
         public NavMeshAgent Agent { get { return agent; }}
         private void Awake()
         {
+            markerPool = new ObjectPool<Marker>(CreateMarker, OnGetMarker, OnReleaseMarker, OnDestroyMarker,maxSize:20);
             agent = GetComponent<NavMeshAgent>();
             agent.updateRotation = false;
             agent.acceleration = 50f;
@@ -35,8 +37,8 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
                 if (Physics.Raycast(ray, out RaycastHit hitInfo))
                 {
                     agent.SetDestination(hitInfo.point);
-                    GameObject marker = Instantiate(markerObject, hitInfo.point, markerObject.transform.localRotation);
-                    Destroy(marker, 1.5f);
+                    var marker = markerPool.Get();
+                    marker.transform.position = hitInfo.point;
                 }
             }
 
@@ -49,7 +51,27 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
             }
         }
 
+        private Marker CreateMarker()
+        {
+            Marker marker = Instantiate(markerObject).GetComponent<Marker>();
+            marker.SetManagedPool(markerPool);
+            return marker;
+        }
 
+        private void OnGetMarker(Marker marker)
+        {
+            marker.gameObject.SetActive(true); 
+        }
+
+        private void OnReleaseMarker(Marker marker)
+        {
+            marker.gameObject.SetActive(false);
+        }
+
+        private void OnDestroyMarker(Marker marker)
+        {
+            Destroy(marker.gameObject);
+        }
 
     }
 }

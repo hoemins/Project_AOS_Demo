@@ -11,26 +11,17 @@ public class MinionBT : MonoBehaviour
     // Depth 1
     SequenceNode attackSequnce;
     SequenceNode chaseSequnce;
-    ActionNode moveAction;
+    public ActionNode moveAction;
 
     // Depth 2
-    ActionNode targetInAttackRange;
-    ActionNode attackAction;
+    public ActionNode targetInAttackRange;
+    public ActionNode attackAction;
 
-    ActionNode targetInChaseRange;
-    ActionNode chaseAction;
-
-    bool isAttackable;
-
-    [SerializeField] float atkRange;
-
-    DetectComponent detectComponent;
-    GameObject targetObj;
+    public ActionNode targetInChaseRange;
+    public ActionNode chaseAction;
 
     private void Start()
     {
-        detectComponent = GetComponent<DetectComponent>();
-
         // Depth 1
         rootNode = new SelectorNode();
 
@@ -48,15 +39,7 @@ public class MinionBT : MonoBehaviour
         targetInAttackRange = new ActionNode();
         attackAction = new ActionNode();
 
-        targetInAttackRange.action += () =>
-        {   
-            return INode.State.Fail; 
-        };
-        attackAction.action += () =>
-        {
-            return INode.State.Fail;
-        };
-
+       
         attackSequnce.AddChild(targetInAttackRange);
         attackSequnce.AddChild(attackAction);
         
@@ -66,31 +49,10 @@ public class MinionBT : MonoBehaviour
         targetInChaseRange = new ActionNode();
         chaseAction = new ActionNode();
 
-        targetInChaseRange.action += () =>
-        {
-            return INode.State.Success;
-        };
-        chaseAction.action += () =>
-        {
-            if (Input.GetKey(KeyCode.A))
-            {
-                Debug.Log("추격 중");
-                return INode.State.Success;
-            }
-            return INode.State.Fail;
-        };
-
         chaseSequnce.AddChild(targetInChaseRange);
         chaseSequnce.AddChild(chaseAction);
 
         //////////////////////////////////////////////////////////////////////
-        
-        // MoveAction
-        moveAction.action += () =>
-        {
-            Debug.Log("이동 중");
-            return INode.State.Success;
-        };
     }
 
     private void Update()
@@ -98,13 +60,5 @@ public class MinionBT : MonoBehaviour
         rootNode.Evaluate();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        if(detectComponent != null)
-            Gizmos.DrawWireSphere(transform.position, detectComponent.DetectRange);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, atkRange);
-    }
+   
 }

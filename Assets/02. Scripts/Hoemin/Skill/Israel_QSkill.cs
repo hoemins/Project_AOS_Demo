@@ -13,6 +13,7 @@ public class Israel_QSkill : WaitSkill
     
             
     public float SkillRange { get; }
+    
 
     public Israel_QSkill(Champion owner) : base(owner) 
     {
@@ -50,4 +51,5 @@ public class Israel_QSkill : WaitSkill
         }
         
     }
+
 }

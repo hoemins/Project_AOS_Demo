@@ -6,9 +6,18 @@ using System.Reflection;
 
 public class Israel_QSkill : WaitSkill
 {
-    SkillEffectHandler handler;
-    Vector3 firePos;
-    public Israel_QSkill(Champion owner) : base(owner) { }
+    SkillEffectCreator handler;
+    MethodInfo createEffectMethodInfo = null;
+    FieldInfo effectListInfo = null;
+    private float skillRange = 10f;
+    
+            
+    public float SkillRange { get; }
+
+    public Israel_QSkill(Champion owner) : base(owner) 
+    {
+        SkillInit();
+    }
 
 
     public override void SkillInit()
@@ -18,17 +27,27 @@ public class Israel_QSkill : WaitSkill
         requiredLevel = 1;
         comsumeMP = 10;
         coolTime = 6f;
-        firePos = Owner.gameObject.transform.position + Vector3.up; // offset 맞춰주기
+
+        Type type = typeof(SkillEffectCreator);
+        handler = Owner.gameObject.GetComponent<SkillEffectCreator>();
+        createEffectMethodInfo = type.GetMethod("CreateEffect");
+        effectListInfo = type.GetField("effectList",BindingFlags.Public | BindingFlags.Instance);
+        effectListInfo.GetValue(handler);
     }
+
     public override void Fire()
     {
-        handler = Owner.gameObject.GetComponent<SkillEffectHandler>();
-
-        Type type = typeof(SkillEffectHandler);
-        MethodInfo methodInfo = type.GetMethod("CreateEffect");
-        FieldInfo fieldInfo = type.GetField("effectList");
-        fieldInfo.GetValue(handler);
-        methodInfo.Invoke(handler, null);
-       
+        if(Owner.ChampionStats.CurMp < comsumeMP || IsCool)
+        {
+            Debug.Log("스킬을 사용할 수 없습니다.");
+            return;
+        }
+        else
+        {
+            Owner.ChampionStats.CurMp -= comsumeMP;
+            createEffectMethodInfo.Invoke(handler,new object[] {(int)BUTTON.Q_BTN});
+            IsCool = true;
+        }
+        
     }
 }

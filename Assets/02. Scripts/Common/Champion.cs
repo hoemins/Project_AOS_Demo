@@ -23,17 +23,48 @@ public class ChampionInfo
     [SerializeField] private float moveSpeed; // 이동 속도
     [SerializeField] private float criticalChance; // 치명타 확률
 
-    public string Name { get { return name; } }
+    public string Name { get { return name; } set { name = value; } }
     public int Level { get { return level; } set { level = (level >= 18) ? 18 : value; } }
-    public int PhysicalAtk { get {  return physicalAtk; }}
-    public int AbilityAtk { get { return abilityAtk; }}
-    public int PhsicalDef { get { return phsicalDef; }}
-    public int MagicalResistance { get { return magicalResistance; }}  
-    public float PhysicalAtkDelay { get { return physicalAtkDelay; }}
-    public int AbilityHaste { get { return abilityHaste; }}
+    public int PhysicalAtk { get {  return physicalAtk; } set { physicalAtk = value; } }
+    public int AbilityAtk { get { return abilityAtk; } set { abilityAtk = value; } }
+    public int PhsicalDef { get { return phsicalDef; } set { phsicalDef = value; } }
+    public int MagicalResistance { get { return magicalResistance; } set { magicalResistance = value;  } }  
+    public float PhysicalAtkDelay { get { return physicalAtkDelay; } set { physicalAtkDelay = value; } }
+    public int AbilityHaste { get { return abilityHaste; } set { abilityHaste = value; } }
     public float MoveSpeed { get {  return moveSpeed; } set { moveSpeed = value; } }
-    public float CriticalChance { get { return criticalChance; }}
+    public float CriticalChance { get { return criticalChance; } set { criticalChance = value; } }
 }
+
+[Serializable]
+public class ChampionStats
+{
+    [SerializeField] private int curHp;
+    [SerializeField] private int maxHp;
+    [SerializeField] private int curMp;
+    [SerializeField] private int maxMp;
+
+    public int MaxHp { get { return maxHp; } set { maxHp = value; } }
+    public int MaxMp { get {  return maxMp; } set { maxMp = value; } }
+    public int CurHp 
+    { 
+        get { return curHp; } 
+        set 
+        {
+            if(curHp <= 0 ) curHp = 0;
+            curHp = value; 
+        } 
+    }
+    public int CurMp 
+    { 
+        get  { return curMp; }
+        set
+        {
+            if (curMp <= 0 ) curMp = 0;
+            curMp = value;
+        }
+    }
+}
+
 
 public enum CHAMPION_STATE
 {
@@ -43,18 +74,22 @@ public enum CHAMPION_STATE
 public abstract class Champion : MonoBehaviour
 {
     [SerializeField] protected ChampionInfo championinfo;
+    [SerializeField] protected ChampionStats championStats;
     [SerializeField] protected CHAMPION_STATE curState;
     [SerializeField] protected ChampionMoveController moveController;
     [SerializeField] List<Skill> skillList;
     private StateMachine<Champion> stateMachine;
     private const int skillCount = 4;
+    Action onDie;
 
     //=============================프로퍼티======================================//
-    public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } } // 현재 상태 변수
+    public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } }
     public ChampionMoveController MoveController { get { return moveController; } }
     public ChampionInfo ChampionInfo { get {  return championinfo; } }
+    public ChampionStats ChampionStats { get { return championStats; } }
     public List<Skill> SkillList { get {  return skillList; } }
     //===========================================================================//
+
 
     // 문제점 : Awake 함수 호출 순서 때문에 NullRef 에러 발생
     // 해결 : ProjectSetting -> Script Excution order 탭에서 호출 순서 커스텀
@@ -65,17 +100,15 @@ public abstract class Champion : MonoBehaviour
         InitChampionInfo();
     }
 
-
-
     /// <summary>
-    /// 챔피언 스탯 초기화
+    /// 챔피언 기본 정보 초기화
     /// </summary>
-    private void InitChampionInfo()
-    {
-        championinfo.Level = 1;
-        championinfo.MoveSpeed = 4f;
-        //MoveController.Agent.speed = championinfo.MoveSpeed;
-    }
+    public abstract void InitChampionInfo();
+
+    public abstract void InitChampionStats();
+
+    public abstract void SetSkill();
+        
 
     /// <summary>
     /// 상태 머신 초기화

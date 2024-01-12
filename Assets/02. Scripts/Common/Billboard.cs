@@ -13,9 +13,4 @@ public class Billboard : MonoBehaviour
         canvas.transform.forward = billboardCam.transform.position - transform.position;
     }
 
-    private void Update()
-    {
-        
-        
-    }
 }

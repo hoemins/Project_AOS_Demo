@@ -8,26 +8,20 @@ public class MinionBT : MonoBehaviour
 {
     SelectorNode rootNode;
 
+    // Depth 1
     SequenceNode attackSequnce;
     SequenceNode chaseSequnce;
-    ActionNode moveAction;
+    public ActionNode moveAction;
 
-    ActionNode targetInRange;
-    ActionNode attackAction;
+    // Depth 2
+    public ActionNode targetInAttackRange;
+    public ActionNode attackAction;
 
-    ActionNode chaseAction;
-
-    bool isAttackable;
-
-    [SerializeField] float atkRange;
-
-    DetectComponent detectComponent;
-    GameObject targetObj;
+    public ActionNode targetInChaseRange;
+    public ActionNode chaseAction;
 
     private void Start()
     {
-        detectComponent = GetComponent<DetectComponent>();
-
         // Depth 1
         rootNode = new SelectorNode();
 
@@ -40,15 +34,31 @@ public class MinionBT : MonoBehaviour
         rootNode.AddChild(moveAction);
 
         // Depth 2
-        targetInRange = new ActionNode();
+
+        // AttackSequnce
+        targetInAttackRange = new ActionNode();
         attackAction = new ActionNode();
 
-        targetInRange.action += () =>
-        {   
+       
+        attackSequnce.AddChild(targetInAttackRange);
+        attackSequnce.AddChild(attackAction);
+        
+        //////////////////////////////////////////////////////////////////
 
-            return INode.State.Fail; 
-        };
+        // ChaseSequnce
+        targetInChaseRange = new ActionNode();
+        chaseAction = new ActionNode();
 
-        attackSequnce.AddChild(targetInRange);
+        chaseSequnce.AddChild(targetInChaseRange);
+        chaseSequnce.AddChild(chaseAction);
+
+        //////////////////////////////////////////////////////////////////////
     }
+
+    private void Update()
+    {
+        rootNode.Evaluate();
+    }
+
+   
 }

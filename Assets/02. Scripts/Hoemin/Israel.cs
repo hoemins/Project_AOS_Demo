@@ -19,6 +19,7 @@ public class Israel : Champion
         SkillList.Add(new Israel_QSkill(this));
         SkillList.Add(new Israel_WSkill(this));
         SkillList.Add(new Israel_ESkill(this));
+        SkillList.Add(new Israel_RSkill(this));
     }
 
     public override void InitChampionStats()

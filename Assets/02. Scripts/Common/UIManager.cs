@@ -33,7 +33,7 @@ public class UIManager : Singleton<UIManager>
     }
 
     /// <summary>
-    /// 상단바에 타이머 표시
+    /// 상단바에 타이머 표시, stringBulider 를 써야할까?
     /// </summary>
     private void ShowTimer()
     {

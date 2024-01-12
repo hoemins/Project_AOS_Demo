@@ -8,13 +8,16 @@ public class MinionBT : MonoBehaviour
 {
     SelectorNode rootNode;
 
+    // Depth 1
     SequenceNode attackSequnce;
     SequenceNode chaseSequnce;
     ActionNode moveAction;
 
-    ActionNode targetInRange;
+    // Depth 2
+    ActionNode targetInAttackRange;
     ActionNode attackAction;
 
+    ActionNode targetInChaseRange;
     ActionNode chaseAction;
 
     bool isAttackable;
@@ -40,15 +43,68 @@ public class MinionBT : MonoBehaviour
         rootNode.AddChild(moveAction);
 
         // Depth 2
-        targetInRange = new ActionNode();
+
+        // AttackSequnce
+        targetInAttackRange = new ActionNode();
         attackAction = new ActionNode();
 
-        targetInRange.action += () =>
+        targetInAttackRange.action += () =>
         {   
-
             return INode.State.Fail; 
         };
+        attackAction.action += () =>
+        {
+            return INode.State.Fail;
+        };
 
-        attackSequnce.AddChild(targetInRange);
+        attackSequnce.AddChild(targetInAttackRange);
+        attackSequnce.AddChild(attackAction);
+        
+        //////////////////////////////////////////////////////////////////
+
+        // ChaseSequnce
+        targetInChaseRange = new ActionNode();
+        chaseAction = new ActionNode();
+
+        targetInChaseRange.action += () =>
+        {
+            return INode.State.Success;
+        };
+        chaseAction.action += () =>
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                Debug.Log("추격 중");
+                return INode.State.Success;
+            }
+            return INode.State.Fail;
+        };
+
+        chaseSequnce.AddChild(targetInChaseRange);
+        chaseSequnce.AddChild(chaseAction);
+
+        //////////////////////////////////////////////////////////////////////
+        
+        // MoveAction
+        moveAction.action += () =>
+        {
+            Debug.Log("이동 중");
+            return INode.State.Success;
+        };
+    }
+
+    private void Update()
+    {
+        rootNode.Evaluate();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        if(detectComponent != null)
+            Gizmos.DrawWireSphere(transform.position, detectComponent.DetectRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, atkRange);
     }
 }

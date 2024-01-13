@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d8e6281f5deb4478152a34d93c1a07, type: 3}
   m_Name: Israel_R
   m_EditorClassIdentifier: 
-  skillImg: {fileID: 0}
-  skillName: 
-  level: 0
-  requiredLevel: 0
-  comsumeMP: 0
-  coolTime: 0
+  skillImg: {fileID: 21300000, guid: 27942b10667724d449423412c29bd20b, type: 3}
+  skillName: Aimed Strike
+  level: 1
+  requiredLevel: 2
+  comsumeMP: 40
+  coolTime: 10
+  skillEffect:
+  - {fileID: 1253354654402752, guid: 4f2c211b3d32c5f4fa7eb7687e824ca7, type: 3}

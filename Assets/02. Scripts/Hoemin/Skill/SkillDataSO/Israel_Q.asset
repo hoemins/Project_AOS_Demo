@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d8e6281f5deb4478152a34d93c1a07, type: 3}
   m_Name: Israel_Q
   m_EditorClassIdentifier: 
-  skillImg: {fileID: 0}
-  skillName: 
-  level: 0
-  requiredLevel: 0
-  comsumeMP: 0
-  coolTime: 0
+  skillImg: {fileID: 21300000, guid: c24394f1ea453fd4ea864f8690b61666, type: 3}
+  skillName: Mystic arrow
+  level: 1
+  requiredLevel: 1
+  comsumeMP: 10
+  coolTime: 3
+  skillEffect:
+  - {fileID: 1519322442116508, guid: 8f605a00280b16b43bb4b0babb6b61fd, type: 3}

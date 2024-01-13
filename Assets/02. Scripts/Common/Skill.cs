@@ -1,26 +1,26 @@
-using Hoemin;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public abstract class Skill
+public abstract class Skill : MonoBehaviour 
 {
     [SerializeField] SkillData data;
-
+    
     private bool isCool;
-    Champion owner;
+    private Champion owner;
 
+    public SkillData Data { get { return data; } }
     public Champion Owner { get { return owner; } }
     public bool IsCool { get { return isCool; } set { isCool = value; } }
-    public Skill(Champion owner)
+
+    private void Awake()
     {
-        this.owner = owner;
+        owner = GetComponentInParent<Champion>();
     }
 
     public abstract void InvokeSkill();
-    public abstract void SkillInit();
+    
+
 }
 
 

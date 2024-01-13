@@ -21,11 +21,17 @@ public class UIManager : Singleton<UIManager>
 
 
     [Header("³» Ã¨ÇÇ¾ð UI")]
+    [SerializeField] Champion myChampion;
     [SerializeField] TextMeshProUGUI[] myStatsText;
     [SerializeField] Image myProfile;
     [SerializeField] TextMeshProUGUI myLevelText;
     [SerializeField] Inventory myInven;
     [SerializeField] TextMeshProUGUI myMoneyText;
+
+    private void Start()
+    {
+        InitChampionStats();
+    }
 
     private void Update()
     {
@@ -39,4 +45,22 @@ public class UIManager : Singleton<UIManager>
     {
         timerText.text = $"{((int)(GameManager.instance.PlayTime / 60)).ToString()}" + " : " + ((int)(GameManager.instance.PlayTime % 60)).ToString();
     }
+
+    private void InitChampionStats()
+    {
+        myStatsText[0].text = myChampion.ChampionInfo.PhysicalAtk.ToString();
+        myStatsText[1].text = myChampion.ChampionInfo.AbilityAtk.ToString();
+        myStatsText[2].text = myChampion.ChampionInfo.PhsicalDef.ToString();
+        myStatsText[3].text = myChampion.ChampionInfo.MagicalResistance.ToString();
+        myStatsText[4].text = myChampion.ChampionInfo.PhysicalAtkDelay.ToString();
+        myStatsText[5].text = (myChampion.ChampionInfo.CriticalChance*100).ToString();
+        myStatsText[6].text = myChampion.ChampionInfo.AbilityHaste.ToString();
+        myStatsText[7].text = (myChampion.ChampionInfo.MoveSpeed*10).ToString();
+
+        myProfile.sprite = myChampion.ChampionInfo.ProfileImg;
+        myLevelText.text = myChampion.ChampionInfo.Level.ToString();
+        
+    }
+   
+
 }

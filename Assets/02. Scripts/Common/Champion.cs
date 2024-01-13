@@ -25,6 +25,9 @@ public class ChampionInfo
 
     public string Name { get { return name; } set { name = value; } }
     public int Level { get { return level; } set { level = (level >= 18) ? 18 : value; } }
+
+    public Sprite ProfileImg { get { return profileImg; } }
+    
     public int PhysicalAtk { get {  return physicalAtk; } set { physicalAtk = value; } }
     public int AbilityAtk { get { return abilityAtk; } set { abilityAtk = value; } }
     public int PhsicalDef { get { return phsicalDef; } set { phsicalDef = value; } }
@@ -77,7 +80,7 @@ public abstract class Champion : MonoBehaviour
     [SerializeField] protected ChampionStats championStats;
     [SerializeField] protected CHAMPION_STATE curState;
     [SerializeField] protected ChampionMoveController moveController;
-    [SerializeField] List<Skill> skillList;
+    [SerializeField] protected List<Skill> skillList;
     private StateMachine<Champion> stateMachine;
     private const int skillCount = 4;
     Action onDie;
@@ -95,7 +98,6 @@ public abstract class Champion : MonoBehaviour
     // 해결 : ProjectSetting -> Script Excution order 탭에서 호출 순서 커스텀
     public virtual void Awake()
     {
-        skillList = new List<Skill>(skillCount);
         InitState();
         InitChampionInfo();
     }
@@ -107,7 +109,6 @@ public abstract class Champion : MonoBehaviour
 
     public abstract void InitChampionStats();
 
-    public abstract void SetSkill();
 
     public abstract void BasicAttack();
 

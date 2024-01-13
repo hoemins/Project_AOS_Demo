@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Israel_E
   m_EditorClassIdentifier: 
   skillImg: {fileID: 21300000, guid: d821bf95533125f42aaac4ae62c2aa7c, type: 3}
-  skillName: ' Flow of essence'
+  skillName: Vision MoveMent
   level: 1
   requiredLevel: 1
-  comsumeMP: 30
+  comsumeMP: 20
   coolTime: 10
+  skillEffect:
+  - {fileID: 1034045548656336, guid: 01069e1ba876f444f90d1db71fb7fef4, type: 3}

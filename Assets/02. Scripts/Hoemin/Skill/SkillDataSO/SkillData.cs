@@ -11,4 +11,5 @@ public class SkillData : ScriptableObject
     public int requiredLevel;
     public int comsumeMP;
     public float coolTime;
+    public GameObject[] skillEffect;
 }

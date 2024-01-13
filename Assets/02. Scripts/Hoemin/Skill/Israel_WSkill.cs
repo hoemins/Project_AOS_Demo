@@ -11,6 +11,8 @@ public class Israel_WSkill : Skill
     FieldInfo effectListInfo = null;
     private float skillRange = 10f;
 
+    SkillData skillData = null;
+
 
     public float SkillRange { get; }
     public Israel_WSkill(Champion owner) : base(owner)
@@ -19,11 +21,7 @@ public class Israel_WSkill : Skill
     }
     public override void SkillInit()
     {
-        name = "Flow of essence";
-        level = 1;
-        requiredLevel = 1;
-        comsumeMP = 20;
-        coolTime = 10f;
+
 
         Type type = typeof(SkillEffectCreator);
         handler = Owner.gameObject.GetComponent<SkillEffectCreator>();
@@ -34,17 +32,7 @@ public class Israel_WSkill : Skill
 
     public override void InvokeSkill()
     {
-        if (Owner.ChampionStats.CurMp < comsumeMP || IsCool)
-        {
-            Debug.Log("스킬을 사용할 수 없습니다.");
-            return;
-        }
-        else
-        {
-            Owner.ChampionStats.CurMp -= comsumeMP;
-            //createEffectMethodInfo.Invoke(handler, new object[] { (int)BUTTON.W_BTN });
-            IsCool = true;
-        }
+        
     }
 
     

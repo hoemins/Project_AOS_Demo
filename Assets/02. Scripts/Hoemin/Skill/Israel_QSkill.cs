@@ -23,11 +23,7 @@ public class Israel_QSkill : Skill
 
     public override void SkillInit()
     {
-        name = "Mystic arrow";
-        level = 1;
-        requiredLevel = 1;
-        comsumeMP = 10;
-        coolTime = 6f;
+
 
         Type type = typeof(SkillEffectCreator);
         handler = Owner.gameObject.GetComponent<SkillEffectCreator>();
@@ -38,17 +34,6 @@ public class Israel_QSkill : Skill
 
     public override void InvokeSkill()
     {
-        if (Owner.ChampionStats.CurMp < comsumeMP || IsCool)
-        {
-            Debug.Log("스킬을 사용할 수 없습니다.");
-            return;
-        }
-        else
-        {
-            //Owner.ChampionStats.CurMp -= comsumeMP;
-            //createEffectMethodInfo.Invoke(handler, new object[] { (int)BUTTON.Q_BTN });
-            //IsCool = true;
-            Debug.Log("이즈 Q 스킬 발동");
-        }
+
     }
 }

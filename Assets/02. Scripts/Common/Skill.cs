@@ -1,23 +1,15 @@
 using Hoemin;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SKILL_INDEX
-{
-    Q,W,E,R
-}
-
+[Serializable]
 public abstract class Skill
 {
-    protected Sprite skillImg;
-    protected string name;
-    protected uint level;
-    protected uint requiredLevel;
-    protected int comsumeMP;
-    protected float coolTime;
-    private bool isCool;
+    [SerializeField] SkillData data;
 
+    private bool isCool;
     Champion owner;
 
     public Champion Owner { get { return owner; } }

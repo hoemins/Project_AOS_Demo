@@ -66,5 +66,41 @@ namespace Hoemin
         }
     }
 
+    public class AttackCommand : ICommand
+    {
+        private IndicatorRenderer indicatorRenderer;
+        private Champion owner;
+
+        // 마우스 우클릭을 적에게 바로 하여 공격 상태로 바로 전환 될 때 생성될 커맨드 
+        public AttackCommand(Champion owner)
+        {
+            this.owner = owner;
+        }
+
+        // 공격 버튼(A)을 누르고 있을 때 생성해줄 커맨드
+        public AttackCommand(IndicatorRenderer indicatorRenderer, Champion owner)
+        {
+            this.indicatorRenderer = indicatorRenderer;
+            this.owner = owner;
+        }
+
+        public void Execute()
+        {
+            if (indicatorRenderer == null)
+                owner.BasicAttack();
+            indicatorRenderer?.DrawIndicator();
+        }
+
+        public void Undo()
+        {
+            indicatorRenderer.EraseIndicator();
+        }
+
+        public Champion GetOwner()
+        {
+            return owner;
+        }
+    }
+
 }
 

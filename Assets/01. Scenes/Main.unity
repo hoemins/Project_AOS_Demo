@@ -15277,24 +15277,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770a2ec56e6d0a34f99e0275d3bec369, type: 3}
---- !u!1 &506523207 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2243201980382429431, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-  m_PrefabInstance: {fileID: 1918403526}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &506523209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506523207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbb165594dec734f963c5f429fd8334, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  billboardCam: {fileID: 963194227}
 --- !u!1001 &507543744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57658,22 +57640,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1351022385, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: effectList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1351022385, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: effectList.Array.data[1]
+    - target: {fileID: 506523209, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
+      propertyPath: billboardCam
       value: 
-      objectReference: {fileID: 1033026374199576, guid: 6795a73db5c0c504e9d24ebebb7baece, type: 3}
-    - target: {fileID: 1351022385, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: effectList.Array.data[2]
-      value: 
-      objectReference: {fileID: 1034045548656336, guid: 01069e1ba876f444f90d1db71fb7fef4, type: 3}
-    - target: {fileID: 1351022385, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: effectList.Array.data[3]
-      value: 
-      objectReference: {fileID: 1033026374199576, guid: 6795a73db5c0c504e9d24ebebb7baece, type: 3}
+      objectReference: {fileID: 963194227}
     - target: {fileID: 360665268026369487, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -57718,38 +57688,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 360665268026369586, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 360665268026369587, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
       propertyPath: m_Name
-      value: Capsule
+      value: Israel
       objectReference: {fileID: 0}
     - target: {fileID: 3308754974688100396, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 8740393121327382405, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8740393121327382405, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8740393121327382405, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8740393121327382405, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8740393121327382405, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
 --- !u!4 &1919642780 stripped

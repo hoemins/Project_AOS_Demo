@@ -108,7 +108,9 @@ public abstract class Champion : MonoBehaviour
     public abstract void InitChampionStats();
 
     public abstract void SetSkill();
-    
+
+    public abstract void BasicAttack();
+
     public abstract Skill GetSkill(int index);
 
     /// <summary>

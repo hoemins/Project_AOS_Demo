@@ -13,135 +13,56 @@ namespace Hoemin
     3. Undo 메서드는 스킬 명령 클래스들이 의존하고있는 Skill 클래스에서
         IndicatorRenderer 내의 그려진 조준선을 지우는 메서드를 호출
      */
-    public enum SkillType
-    {
-        DIRECT,
-        WAIT,
-    }
 
     public interface ICommand
     {
         public void Execute();
         public void Undo();
     }
-    
-    public class QSkillCommand : ICommand
-    {
-        private PlayerInput owner;
 
-        public QSkillCommand(PlayerInput owner)
+    /// <summary>
+    /// 스킬 버튼을 눌렀을 때 스킬 조준선을 켜줄 커맨드 클래스
+    /// </summary>
+    public class OnSkillCommand : ICommand
+    {
+        private IndicatorRenderer indicatorRenderer;
+
+        public OnSkillCommand(IndicatorRenderer indicatorRenderer)
         {
-            this.owner = owner;
+            this.indicatorRenderer = indicatorRenderer;
         }
 
         public void Execute()
         {
-            owner.CurUseSkill = owner.Champion.SkillList[(int)BUTTON.Q_BTN];
+            indicatorRenderer.DrawIndicator();
         }
 
         public void Undo()
         {
-            owner.CurUseSkill = null;
+            indicatorRenderer.EraseIndicator();
         }
     }
 
-    public class WSkillCommand : ICommand
+    /// <summary>
+    /// 스킬 발동 커맨드
+    /// </summary>
+    public class InvokeSkillCommand : ICommand
     {
-        private PlayerInput owner;
-        
-        public WSkillCommand(PlayerInput owner)
+        private Skill skill;
+
+        public InvokeSkillCommand(Skill skill)
         {
-            this.owner = owner;
+            this.skill = skill;
         }
 
         public void Execute()
         {
-            owner.CurUseSkill = owner.Champion.SkillList[(int)BUTTON.W_BTN];
+            skill.InvokeSkill();
         }
 
         public void Undo()
         {
-            owner.CurUseSkill = null;
-        }
-    }
 
-    public class ESkillCommand : ICommand
-    {
-        private PlayerInput owner;
-
-        public ESkillCommand(PlayerInput owner)
-        {
-            this.owner = owner;
-        }
-
-        public void Execute()
-        {
-            owner.CurUseSkill = owner.Champion.SkillList[(int)BUTTON.E_BTN];
-        }
-
-        public void Undo()
-        {
-            owner.CurUseSkill = null;
-        }
-    }
-
-    public class RSkillCommand : ICommand
-    {
-        private PlayerInput owner;
-
-        public RSkillCommand(PlayerInput owner)
-        {
-            this.owner = owner;
-        }
-
-        public void Execute()
-        {
-            owner.CurUseSkill = owner.Champion.SkillList[(int)BUTTON.R_BTN];
-        }
-
-        public void Undo()
-        {
-            owner.CurUseSkill = null;
-        }
-    }
-
-    public class DSpellCommand : ICommand
-    {
-        private PlayerInput owner;
-
-        public DSpellCommand(PlayerInput owner)
-        {
-            this.owner = owner;
-        }
-
-        public void Execute()
-        {
-            owner.CurUseSkill = owner.Champion.SkillList[(int)BUTTON.D_BTN];
-        }
-
-        public void Undo()
-        {
-            owner.CurUseSkill = null;
-        }
-    }
-
-    public class FSpellCommand : ICommand
-    {
-        private PlayerInput owner;
-
-        public FSpellCommand(PlayerInput owner)
-        {
-            this.owner = owner;
-        }
-
-        public void Execute()
-        {
-            owner.CurUseSkill = owner.Champion.SkillList[(int)BUTTON.R_BTN];
-        }
-
-        public void Undo()
-        {
-            owner.CurUseSkill = null;
         }
     }
 

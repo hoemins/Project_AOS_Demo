@@ -108,7 +108,8 @@ public abstract class Champion : MonoBehaviour
     public abstract void InitChampionStats();
 
     public abstract void SetSkill();
-        
+    
+    public abstract Skill GetSkill(int index);
 
     /// <summary>
     /// 상태 머신 초기화

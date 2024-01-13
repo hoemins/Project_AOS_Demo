@@ -41,4 +41,9 @@ public class Israel : Champion
         championinfo.AbilityHaste = 0;
         championinfo.CriticalChance = 0.15f; 
     }
+
+    public override Skill GetSkill(int index)
+    {
+        return SkillList[index];
+    }
 }

@@ -4,7 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using System;
 
-public class Israel_RSkill : WaitSkill
+public class Israel_RSkill : Skill
 {
     SkillEffectCreator handler;
     MethodInfo createEffectMethodInfo = null;
@@ -32,7 +32,7 @@ public class Israel_RSkill : WaitSkill
         effectListInfo.GetValue(handler);
     }
 
-    public override void Fire()
+    public override void InvokeSkill()
     {
         if (Owner.ChampionStats.CurMp < comsumeMP || IsCool)
         {
@@ -42,7 +42,7 @@ public class Israel_RSkill : WaitSkill
         else
         {
             Owner.ChampionStats.CurMp -= comsumeMP;
-            createEffectMethodInfo.Invoke(handler, new object[] { (int)BUTTON.R_BTN });
+            //createEffectMethodInfo.Invoke(handler, new object[] { (int)BUTTON.R_BTN });
             IsCool = true;
         }
     }

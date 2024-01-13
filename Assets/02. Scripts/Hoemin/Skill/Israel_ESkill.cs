@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class Israel_ESkill : DirectSkill
+public class Israel_ESkill : Skill
 {
     SkillEffectCreator handler;
     MethodInfo createEffectMethodInfo = null;
@@ -30,7 +30,8 @@ public class Israel_ESkill : DirectSkill
         effectListInfo.GetValue(handler);
     }
 
-    public override void Fire()
+
+    public override void InvokeSkill()
     {
         if (Owner.ChampionStats.CurMp < comsumeMP || IsCool)
         {
@@ -40,11 +41,8 @@ public class Israel_ESkill : DirectSkill
         else
         {
             Owner.ChampionStats.CurMp -= comsumeMP;
-            createEffectMethodInfo.Invoke(handler, new object[] { (int)BUTTON.E_BTN });
+            //createEffectMethodInfo.Invoke(handler, new object[] { (int)BUTTON.E_BTN });
             IsCool = true;
         }
     }
-
-
-    
 }

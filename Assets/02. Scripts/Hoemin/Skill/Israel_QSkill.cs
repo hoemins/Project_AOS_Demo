@@ -4,14 +4,14 @@ using System;
 using UnityEngine;
 using System.Reflection;
 
-public class Israel_QSkill : WaitSkill
+public class Israel_QSkill : Skill
 {
     SkillEffectCreator handler;
     MethodInfo createEffectMethodInfo = null;
     FieldInfo effectListInfo = null;
     private float skillRange = 10f;
     
-            
+    
     public float SkillRange { get; }
     
 
@@ -36,20 +36,19 @@ public class Israel_QSkill : WaitSkill
         effectListInfo.GetValue(handler);
     }
 
-    public override void Fire()
+    public override void InvokeSkill()
     {
-        if(Owner.ChampionStats.CurMp < comsumeMP || IsCool)
+        if (Owner.ChampionStats.CurMp < comsumeMP || IsCool)
         {
             Debug.Log("스킬을 사용할 수 없습니다.");
             return;
         }
         else
         {
-            Owner.ChampionStats.CurMp -= comsumeMP;
-            createEffectMethodInfo.Invoke(handler,new object[] {(int)BUTTON.Q_BTN});
-            IsCool = true;
+            //Owner.ChampionStats.CurMp -= comsumeMP;
+            //createEffectMethodInfo.Invoke(handler, new object[] { (int)BUTTON.Q_BTN });
+            //IsCool = true;
+            Debug.Log("이즈 Q 스킬 발동");
         }
-        
     }
-
 }

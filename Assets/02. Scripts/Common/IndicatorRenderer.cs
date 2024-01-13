@@ -7,5 +7,13 @@ using UnityEngine;
 /// </summary>
 public class IndicatorRenderer : MonoBehaviour
 {
-    
+    public void DrawIndicator()
+    {
+        Debug.Log("스킬 조준 표시");
+    }
+
+    public void EraseIndicator()
+    {
+        Debug.Log("스킬 조준 취소");
+    }
 }

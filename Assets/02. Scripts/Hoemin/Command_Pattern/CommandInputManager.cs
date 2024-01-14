@@ -32,17 +32,16 @@ public class CommandInputManager : MonoBehaviour
         {
             ICommand onSpaceSkill = new OnSkillCommand(indicatorRenderer);
             invoker.ExecuteCommand(onSpaceSkill);
+            
             if (Input.GetMouseButtonDown(0))
             {
                 Skill spaceSkill = champion.GetSkill(index);
                 ICommand useSpaceSkill = new InvokeSkillCommand(spaceSkill);
                 invoker.ExecuteCommand(useSpaceSkill);
-
             }
             if (Input.GetMouseButtonDown(1))
             {
                 invoker.UndoCommand();
-
             }
         }
     }

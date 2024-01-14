@@ -13,8 +13,8 @@ public class Israel_QSkill : Skill
 
     public override void InvokeSkill()
     {
-        Debug.Log(Data.skillEffect[0]);
+        Owner.Anim.Play("Qskill");
         Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
-        
     }
+
 }

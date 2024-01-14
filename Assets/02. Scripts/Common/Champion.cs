@@ -81,8 +81,8 @@ public abstract class Champion : MonoBehaviour
     [SerializeField] protected CHAMPION_STATE curState;
     [SerializeField] protected ChampionMoveController moveController;
     [SerializeField] protected List<Skill> skillList;
+    private Animator anim;
     private StateMachine<Champion> stateMachine;
-    private const int skillCount = 4;
     Action onDie;
 
     //=============================프로퍼티======================================//
@@ -91,6 +91,7 @@ public abstract class Champion : MonoBehaviour
     public ChampionInfo ChampionInfo { get {  return championinfo; } }
     public ChampionStats ChampionStats { get { return championStats; } }
     public List<Skill> SkillList { get {  return skillList; } }
+    public Animator Anim { get { return anim; } }
     //===========================================================================//
 
 
@@ -98,6 +99,7 @@ public abstract class Champion : MonoBehaviour
     // 해결 : ProjectSetting -> Script Excution order 탭에서 호출 순서 커스텀
     public virtual void Awake()
     {
+        anim = GetComponentInChildren<Animator>();
         InitState();
         InitChampionInfo();
     }

@@ -7,6 +7,7 @@ public class ChampionIdleState : ChampionState
     public override void Enter()
     {
         champion.CurState = CHAMPION_STATE.IDLE;
+        champion.Anim.SetBool("IsMove", false);
     }
 
     public override void Update()
@@ -20,16 +21,19 @@ public class ChampionIdleState : ChampionState
                 
     }           
 }
-                  
+
 public class ChampionMoveState : ChampionState
 {
     public override void Enter()
     {
         champion.CurState = CHAMPION_STATE.MOVE;
+        champion.Anim.SetBool("IsMove", true);
     }
 
     public override void Update()
     {
+        if (champion.CurState == CHAMPION_STATE.STUN || champion.CurState == CHAMPION_STATE.AIRBORNE || champion.CurState == CHAMPION_STATE.DIE) { return; }
+
         if (champion.MoveController.Agent.velocity == Vector3.zero)
             sm.SetState((int)CHAMPION_STATE.IDLE);
     }
@@ -37,7 +41,7 @@ public class ChampionMoveState : ChampionState
 
     public override void Exit()
     {
-
+        champion.Anim.SetBool("IsMove", false);
     }
 }
 

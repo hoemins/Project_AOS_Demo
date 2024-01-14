@@ -74,13 +74,12 @@ namespace Hoemin
         {
             if(collision.gameObject.layer == targetLayer)
             {
-                //Lock all axes movement and rotation
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 moveSpeed = 0;
 
                 ContactPoint contact = collision.contacts[0];
-                Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
                 Vector3 pos = contact.point + contact.normal * hitOffset;
+                Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
 
                 if (hitEffectObj != null)
                 {

@@ -8,14 +8,23 @@ using UnityEngine;
 /// </summary>
 public class IndicatorRenderer : MonoBehaviour
 {
+    private Champion owner;
+    public GameObject[] indicators;
+
+    private void Start()
+    {
+        owner = GetComponentInParent<Champion>();
+    }
 
     public void DrawIndicator()
     {
         Debug.Log("스킬 조준 표시");
+        indicators[0].SetActive(true);
     }
 
     public void EraseIndicator()
     {
         Debug.Log("스킬 조준 취소");
+        indicators[0].SetActive(false);
     }
 }

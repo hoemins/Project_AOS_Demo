@@ -24,5 +24,6 @@ public class CommandInvoker
     {
         ICommand latestCommand = undoStack.Pop();
         latestCommand?.Undo();
+        undoStack.Clear();
     }
 }

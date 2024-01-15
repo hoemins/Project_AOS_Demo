@@ -4827,6 +4827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
+  skillRange: 10
   hitOffset: 0.1
   useFirePointRotation: 0
   rotationOffset: {x: 0, y: 0, z: 0}
@@ -4837,6 +4838,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
+  firePos: {x: 0, y: 0, z: 0}
 --- !u!199 &199317234387275066
 ParticleSystemRenderer:
   serializedVersion: 6

@@ -36,7 +36,7 @@ public class CommandInputManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Skill curskill = champion.GetSkill(index);
-                ICommand useSkill = new InvokeSkillCommand(curskill);
+                ICommand useSkill = new InvokeSkillCommand(curskill,indicatorRenderer,(INDICATOR_ENUM)index);
                 invoker.ExecuteCommand(useSkill);
             }
             if (Input.GetMouseButtonDown(1))

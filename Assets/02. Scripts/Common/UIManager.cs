@@ -27,6 +27,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] TextMeshProUGUI myLevelText;
     [SerializeField] Inventory myInven;
     [SerializeField] TextMeshProUGUI myMoneyText;
+    [SerializeField] GameObject[] skillSlots;
 
     private void Start()
     {

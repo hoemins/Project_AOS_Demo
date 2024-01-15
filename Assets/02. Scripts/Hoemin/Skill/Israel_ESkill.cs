@@ -5,19 +5,36 @@ using UnityEngine;
 public class Israel_ESkill : Skill
 {
 
-    private float skillRange = 8f;
-
-    private void Update()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-    }
-
-
     public override void InvokeSkill()
     {
+        if (IsCool)
+        {
+            Debug.Log("ÄðÅ¸ÀÓÁß");
+            return;
+        }
         Owner.Anim.Play("Eskill");
         Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
-        Owner.transform.position = Input.mousePosition;
+
+        IsCool = true;
+        StartCoroutine(CoolTimeCor());
+
+    }
+
+    IEnumerator CoolTimeCor()
+    {
+        float curTime = 0;
+        while (IsCool)
+        {
+            curTime += Time.deltaTime;
+            if (curTime >= Data.coolTime)
+            {
+                if (IsCool)
+                {
+                    IsCool = false;
+                    curTime = 0;
+                }
+            }
+            yield return null;
+        }
     }
 }

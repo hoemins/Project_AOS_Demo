@@ -5,15 +5,6 @@ using UnityEngine;
 
 namespace Hoemin
 {
-    /*
-     [To do]
-    1. IndicatorRenderer 클래스를 만들고 Skill 클래스가 이를 의존하도록 만들어 
-        스킬 명령 클래스들이 Skill 클래스들을 의존하도록 할 것.
-    2. 스킬 조준 및 발사, A 키 누를 시 공격하는 명령 구현
-    3. Undo 메서드는 스킬 명령 클래스들이 의존하고있는 Skill 클래스에서
-        IndicatorRenderer 내의 그려진 조준선을 지우는 메서드를 호출
-     */
-
     public enum INDICATOR_ENUM
     {
         QSkill,WSkill,ESkill,RSkill,Attack
@@ -56,15 +47,19 @@ namespace Hoemin
     public class InvokeSkillCommand : ICommand
     {
         private Skill skill;
-
-        public InvokeSkillCommand(Skill skill)
+        private IndicatorRenderer renderer;
+        private INDICATOR_ENUM indicatorEnum;
+        public InvokeSkillCommand(Skill skill, IndicatorRenderer renderer, INDICATOR_ENUM indicatorEnum)
         {
             this.skill = skill;
+            this.renderer = renderer;
+            this.indicatorEnum = indicatorEnum;
         }
 
         public void Execute()
         {
             skill.InvokeSkill();
+            renderer.EraseIndicator((int)indicatorEnum);
         }
 
         public void Undo()

@@ -432,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8724754377197412785}
   - component: {fileID: 8724754377197412787}
+  - component: {fileID: 9072060750979925402}
   m_Layer: 5
   m_Name: SpellSlot
   m_TagString: Untagged
@@ -471,3 +472,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8724754377197412784}
   m_CullTransparentMesh: 1
+--- !u!114 &9072060750979925402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724754377197412784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea68a76eaa6eb5749a61cbe0e2ac2747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,6 +8,7 @@ namespace Hoemin
     public class SkillEffectController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 15f;
+        [SerializeField] private float skillRange;
         [SerializeField] private float hitOffset = 0f;
         [SerializeField] private bool useFirePointRotation;
         [SerializeField] private Vector3 rotationOffset = Vector3.zero;
@@ -15,6 +16,8 @@ namespace Hoemin
         [SerializeField] private GameObject flashEffectObj;
         [SerializeField] private GameObject[] detached;
         [SerializeField] private LayerMask targetLayer;
+        [SerializeField] private Vector3 firePos;
+        [SerializeField] private Champion owner;
         private Rigidbody rb;
         private Vector3 direction;
 
@@ -22,12 +25,11 @@ namespace Hoemin
         void Start()
         {
             rb = GetComponent<Rigidbody>();
-            
-
             CreateFlashEffect();
             SetDirection();
+            // 발사 위치 저장
+            firePos = transform.position;
 
-            Destroy(gameObject, 5);
         }
 
         private void SetDirection()
@@ -66,13 +68,17 @@ namespace Hoemin
             if(moveSpeed != 0)
             {
                 rb.velocity = transform.forward * moveSpeed;
+                if (Vector3.Distance(firePos, transform.position) >= skillRange)
+                    Destroy(gameObject);
             }
         }
 
 
+
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.layer == targetLayer)
+            // 맞았을 때 이펙트 생성하기
+            if (collision.gameObject.layer == targetLayer)
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 moveSpeed = 0;
@@ -108,6 +114,9 @@ namespace Hoemin
                 }
                 Destroy(gameObject);
             }
+
+
+
         }
 
     }

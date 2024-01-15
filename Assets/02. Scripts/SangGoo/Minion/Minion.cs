@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MinionInfo
@@ -44,8 +45,24 @@ public class Minion : MonoBehaviour
         {
             if (attackRangeDetect.IsDetected)
                 return INode.State.Success;
+            else
+                attackRangeDetect.targetCol = null;
+
             return INode.State.Fail;
         };
+
+        minionBT.targetingToAttack.action += () =>
+        {
+            if (attackRangeDetect.targetCol == null)
+                attackRangeDetect.targetCol = attackRangeDetect.Colliders[0];
+            else
+            {
+                if (attackRangeDetect.Colliders.Contains(attackRangeDetect.targetCol) == false)
+                    attackRangeDetect.targetCol = attackRangeDetect.Colliders[0];
+            }
+            return INode.State.Success;
+        };
+
         minionBT.attackAction.action += () => { Attack(); return INode.State.Run; };
 
 
@@ -54,8 +71,24 @@ public class Minion : MonoBehaviour
         {
             if (chaseRangeDetect.IsDetected)
                 return INode.State.Success;
+            else
+                chaseRangeDetect.targetCol = null;
+
             return INode.State.Fail;
         };
+
+        minionBT.targetingToChase.action += () =>
+        {
+            if(chaseRangeDetect.targetCol == null)
+                chaseRangeDetect.targetCol = chaseRangeDetect.Colliders[0];
+            else
+            {
+                if(chaseRangeDetect.Colliders.Contains(chaseRangeDetect.targetCol) == false)
+                    chaseRangeDetect.targetCol = chaseRangeDetect.Colliders[0];
+            }
+            return INode.State.Success;
+        };
+
         minionBT.chaseAction.action += () => { ChaseMove(); return INode.State.Run; };
 
         // 이동 파트

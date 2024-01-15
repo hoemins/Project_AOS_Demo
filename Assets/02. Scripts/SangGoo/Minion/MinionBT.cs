@@ -15,9 +15,11 @@ public class MinionBT : MonoBehaviour
 
     // Depth 2
     public ActionNode targetInAttackRange;
+    public ActionNode targetingToAttack;
     public ActionNode attackAction;
 
     public ActionNode targetInChaseRange;
+    public ActionNode targetingToChase;
     public ActionNode chaseAction;
 
     private void Start()
@@ -37,19 +39,23 @@ public class MinionBT : MonoBehaviour
 
         // AttackSequnce
         targetInAttackRange = new ActionNode();
+        targetingToAttack = new ActionNode();
         attackAction = new ActionNode();
 
        
         attackSequnce.AddChild(targetInAttackRange);
+        attackSequnce.AddChild(targetingToAttack);
         attackSequnce.AddChild(attackAction);
         
         //////////////////////////////////////////////////////////////////
 
         // ChaseSequnce
         targetInChaseRange = new ActionNode();
+        targetingToChase = new ActionNode();
         chaseAction = new ActionNode();
 
         chaseSequnce.AddChild(targetInChaseRange);
+        chaseSequnce.AddChild(targetingToChase);
         chaseSequnce.AddChild(chaseAction);
 
         //////////////////////////////////////////////////////////////////////

@@ -8,6 +8,8 @@ TagManager:
   - Building
   - Minion
   - Shop
+  - Red
+  - Blue
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Friendly
   - Enemy
   - Indicator
-  - 
-  - 
+  - Red
+  - Blue
   - 
   - 
   - 

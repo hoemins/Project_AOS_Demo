@@ -9,36 +9,83 @@ public class MinionSpanwer : MonoBehaviour
     public GameObject[] minonPrefabs;
     public Transform goalPoint;
 
-    Type meleeType;
-    Type rangeType;
-    Type canonType;
+    Type meleeMinionType;
+    Type rangeMinionType;
+    Type canonMinionType;
+
+    int curSpanwCount;
+
+    int curWave;
 
     private void Start()
     {
-        meleeType = typeof(MeleeMinion);
+        curSpanwCount = 0;
+        curWave = 0;
 
-        MinionPoolManager.instacne.CreatePool(meleeType);
+        meleeMinionType = typeof(MeleeMinion);
+        rangeMinionType = typeof(RangeMinion);
+        canonMinionType = typeof(CanonMinion);
 
-        for(int i = 0; i < 30; i++)
-            MinionPoolManager.instacne.Enqueue(meleeType, minonPrefabs[0], transform);
+        PoolManager.instacne.CreatePool(meleeMinionType);
+        PoolManager.instacne.CreatePool(rangeMinionType);
+        PoolManager.instacne.CreatePool(canonMinionType);
+
+        for (int i = 0; i < 100; i++)
+        {
+            PoolManager.instacne.Enqueue(meleeMinionType, minonPrefabs[0]);
+            PoolManager.instacne.Enqueue(rangeMinionType, minonPrefabs[1]);
+        }
+        for (int i = 0; i < 30; i++)
+            PoolManager.instacne.Enqueue(canonMinionType, minonPrefabs[2]);
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Spawn(meleeType);
+            StartCoroutine(SpawnCo());
         }
     }
 
     public void Spawn(Type type)
     {
-        GameObject spawnObject = MinionPoolManager.instacne.Dequeue(type);
+        GameObject spawnObject = PoolManager.instacne.Dequeue(type);
         spawnObject.transform.position = transform.position;
+        spawnObject.tag = gameObject.tag;
 
         if (spawnObject.TryGetComponent<Minion>(out var minion))
+        {
             minion.goalPoint = goalPoint;
+        }
 
         spawnObject.SetActive(true);
+    }
+
+    IEnumerator SpawnCo()
+    {
+        curWave++;
+        while (curSpanwCount < 3)
+        {
+            curSpanwCount++;
+            Spawn(meleeMinionType);
+            yield return new WaitForSeconds(1f);
+        }
+        curSpanwCount = 0;
+
+        if (curWave % 3 == 0)
+        {
+            Spawn(canonMinionType);
+            yield return new WaitForSeconds(1f);
+        }
+
+        while (curSpanwCount < 3)
+        {
+            curSpanwCount++;
+            Spawn(rangeMinionType);
+            yield return new WaitForSeconds(1f);
+        }
+        curSpanwCount = 0;
+
+        yield return null;
     }
 }

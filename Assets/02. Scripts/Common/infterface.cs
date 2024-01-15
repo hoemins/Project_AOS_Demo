@@ -6,6 +6,7 @@ using UnityEngine;
 
 public interface IHitable
 {
+    int Hp { get; set; }
     void Hit(int value);
 }
 

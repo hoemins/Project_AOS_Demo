@@ -15229,9 +15229,9 @@ GameObject:
   - component: {fileID: -8879882269900622163}
   - component: {fileID: 1630879410163645321}
   - component: {fileID: -2095041764411735050}
-  - component: {fileID: 7753240019161761886}
+  - component: {fileID: 8166150233469180648}
   m_Layer: 9
-  m_Name: MeleeMinion
+  m_Name: CanonMinion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15246,7 +15246,7 @@ Transform:
   m_GameObject: {fileID: 186504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 460428}
@@ -15275,7 +15275,7 @@ Animator:
   m_GameObject: {fileID: 186504}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6750944f6e7662742965b30ed5eaeae4, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5bee20f098b2ce54a9f5005c66ca5da1, type: 2}
+  m_Controller: {fileID: 9100000, guid: f082dbbac2b2c61488c59cc75476a1cd, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -15329,7 +15329,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  detectRange: 2
+  detectRange: 5.5
   colliders: []
   targetCol: {fileID: 0}
 --- !u!114 &1630879410163645321
@@ -15372,7 +15372,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &7753240019161761886
+--- !u!136 &8166150233469180648
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

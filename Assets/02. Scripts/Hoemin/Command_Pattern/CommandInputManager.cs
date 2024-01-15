@@ -35,9 +35,9 @@ public class CommandInputManager : MonoBehaviour
             
             if (Input.GetMouseButtonDown(0))
             {
-                Skill spaceSkill = champion.GetSkill(index);
-                ICommand useSpaceSkill = new InvokeSkillCommand(spaceSkill);
-                invoker.ExecuteCommand(useSpaceSkill);
+                Skill curskill = champion.GetSkill(index);
+                ICommand useSkill = new InvokeSkillCommand(curskill);
+                invoker.ExecuteCommand(useSkill);
             }
             if (Input.GetMouseButtonDown(1))
             {

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MinionBT : MonoBehaviour
 {
+    // Depth 0
     SelectorNode rootNode;
 
     // Depth 1
@@ -22,11 +23,12 @@ public class MinionBT : MonoBehaviour
     public ActionNode targetingToChase;
     public ActionNode chaseAction;
 
-    private void Start()
+    private void Awake()
     {
-        // Depth 1
+        // Depth 0
         rootNode = new SelectorNode();
 
+        // Depth 1
         attackSequnce = new SequenceNode();
         chaseSequnce = new SequenceNode();
         moveAction = new ActionNode();
@@ -41,7 +43,6 @@ public class MinionBT : MonoBehaviour
         targetInAttackRange = new ActionNode();
         targetingToAttack = new ActionNode();
         attackAction = new ActionNode();
-
        
         attackSequnce.AddChild(targetInAttackRange);
         attackSequnce.AddChild(targetingToAttack);
@@ -57,7 +58,6 @@ public class MinionBT : MonoBehaviour
         chaseSequnce.AddChild(targetInChaseRange);
         chaseSequnce.AddChild(targetingToChase);
         chaseSequnce.AddChild(chaseAction);
-
         //////////////////////////////////////////////////////////////////////
     }
 
@@ -66,5 +66,5 @@ public class MinionBT : MonoBehaviour
         rootNode.Evaluate();
     }
 
-   
+
 }

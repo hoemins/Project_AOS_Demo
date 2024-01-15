@@ -10,7 +10,14 @@ public class DetectComponent : MonoBehaviour, IDetectable
     public float DetectRange => detectRange;
     public bool IsDetected => colliders.Length > 0;
     public Collider[] Colliders => colliders;
-    Collider[] colliders;
+    [SerializeField] Collider[] colliders;
+
+    public Collider targetCol;
+
+    private void Start()
+    {
+        targetCol = null;
+    }
 
     private void Update()
     {

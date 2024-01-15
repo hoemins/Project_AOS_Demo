@@ -30,8 +30,8 @@ public class CommandInputManager : MonoBehaviour
     {
         if (Input.GetKey(key))
         {
-            ICommand onSpaceSkill = new OnSkillCommand(indicatorRenderer, (INDICATOR_ENUM)index);
-            invoker.ExecuteCommand(onSpaceSkill);
+            ICommand onSkill = new OnSkillCommand(indicatorRenderer, (INDICATOR_ENUM)index);
+            invoker.ExecuteCommand(onSkill);
             
             if (Input.GetMouseButtonDown(0))
             {

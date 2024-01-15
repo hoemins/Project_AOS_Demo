@@ -17,7 +17,7 @@ public class Israel_ESkill : Skill
     public override void InvokeSkill()
     {
         Owner.Anim.Play("Eskill");
-        Instantiate(Data.skillEffect[2], Owner.transform.position, Quaternion.identity);
+        Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
         Owner.transform.position = Input.mousePosition;
     }
 }

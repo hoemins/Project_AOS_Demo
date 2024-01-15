@@ -11,6 +11,6 @@ public class Israel_RSkill : Skill
     public override void InvokeSkill()
     {
         Owner.Anim.Play("Rskill");
-        Instantiate(Data.skillEffect[3], Owner.transform.position, Quaternion.identity);
+        Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
     }
 }

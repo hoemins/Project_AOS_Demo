@@ -22,6 +22,7 @@ namespace Hoemin
         void Start()
         {
             rb = GetComponent<Rigidbody>();
+            
 
             CreateFlashEffect();
             SetDirection();
@@ -33,11 +34,10 @@ namespace Hoemin
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out hit))
             {
-                direction = (hit.point + Vector3.up) - transform.position;
-                direction.Normalize();
+                direction = new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position;
+                transform.forward = direction;
             }
         }
 
@@ -65,7 +65,7 @@ namespace Hoemin
         {
             if(moveSpeed != 0)
             {
-                rb.velocity = direction*moveSpeed;
+                rb.velocity = transform.forward * moveSpeed;
             }
         }
 

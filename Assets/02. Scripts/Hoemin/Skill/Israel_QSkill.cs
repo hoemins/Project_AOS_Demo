@@ -10,7 +10,6 @@ public class Israel_QSkill : Skill
     public float SkillRange { get; }
 
 
-
     public override void InvokeSkill()
     {
         Owner.Anim.Play("Qskill");

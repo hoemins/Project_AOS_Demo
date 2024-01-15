@@ -26,7 +26,7 @@ namespace Hoemin
     }
 
     /// <summary>
-    /// 스킬 버튼을 눌렀을 때 스킬 조준선을 켜줄 커맨드 클래스
+    /// 스킬 버튼을 눌렀을 때 스킬 조준선을 켜는 명령
     /// </summary>
     public class OnSkillCommand : ICommand
     {
@@ -51,7 +51,7 @@ namespace Hoemin
     }
 
     /// <summary>
-    /// 스킬 발동 커맨드
+    /// 스킬 발동 명령
     /// </summary>
     public class InvokeSkillCommand : ICommand
     {
@@ -73,6 +73,9 @@ namespace Hoemin
         }
     }
 
+    /// <summary>
+    /// 공격 명령 
+    /// </summary>
     public class AttackCommand : ICommand
     {
         private IndicatorRenderer indicatorRenderer;

@@ -14,6 +14,11 @@ namespace Hoemin
         IndicatorRenderer 내의 그려진 조준선을 지우는 메서드를 호출
      */
 
+    public enum INDICATOR_ENUM
+    {
+        QSkill,WSkill,ESkill,RSkill,Attack
+    }
+
     public interface ICommand
     {
         public void Execute();
@@ -26,20 +31,22 @@ namespace Hoemin
     public class OnSkillCommand : ICommand
     {
         private IndicatorRenderer indicatorRenderer;
+        private INDICATOR_ENUM indicatorEnum;
 
-        public OnSkillCommand(IndicatorRenderer indicatorRenderer)
+        public OnSkillCommand(IndicatorRenderer indicatorRenderer, INDICATOR_ENUM indicatorEnum)
         {
             this.indicatorRenderer = indicatorRenderer;
+            this.indicatorEnum = indicatorEnum; 
         }
 
         public void Execute()
         {
-            indicatorRenderer.DrawIndicator();
+            indicatorRenderer.DrawIndicator((int)indicatorEnum);
         }
 
         public void Undo()
         {
-            indicatorRenderer.EraseIndicator();
+            indicatorRenderer.EraseIndicator((int)indicatorEnum);
         }
     }
 
@@ -69,6 +76,7 @@ namespace Hoemin
     public class AttackCommand : ICommand
     {
         private IndicatorRenderer indicatorRenderer;
+        private INDICATOR_ENUM indicatorEnum;
         private Champion owner;
 
         // 마우스 우클릭을 적에게 바로 하여 공격 상태로 바로 전환 될 때 생성될 커맨드 
@@ -78,22 +86,23 @@ namespace Hoemin
         }
 
         // 공격 버튼(A)을 누르고 있을 때 생성해줄 커맨드
-        public AttackCommand(IndicatorRenderer indicatorRenderer, Champion owner)
+        public AttackCommand(IndicatorRenderer indicatorRenderer, Champion owner, INDICATOR_ENUM indicatorEnum)
         {
             this.indicatorRenderer = indicatorRenderer;
             this.owner = owner;
+            this.indicatorEnum = indicatorEnum;
         }
 
         public void Execute()
         {
             if (indicatorRenderer == null)
                 owner.BasicAttack();
-            indicatorRenderer?.DrawIndicator();
+            indicatorRenderer?.DrawIndicator((int)indicatorEnum);
         }
 
         public void Undo()
         {
-            indicatorRenderer.EraseIndicator();
+            indicatorRenderer.EraseIndicator((int)indicatorEnum);
         }
 
         public Champion GetOwner()

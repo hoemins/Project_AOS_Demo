@@ -30,7 +30,7 @@ public class CommandInputManager : MonoBehaviour
     {
         if (Input.GetKey(key))
         {
-            ICommand onSpaceSkill = new OnSkillCommand(indicatorRenderer);
+            ICommand onSpaceSkill = new OnSkillCommand(indicatorRenderer, (INDICATOR_ENUM)index);
             invoker.ExecuteCommand(onSpaceSkill);
             
             if (Input.GetMouseButtonDown(0))
@@ -50,13 +50,17 @@ public class CommandInputManager : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A))
         {
-            ICommand aimAttackCommand = new AttackCommand(indicatorRenderer, champion);
+            ICommand aimAttackCommand = new AttackCommand(indicatorRenderer, champion, INDICATOR_ENUM.Attack);
             invoker.ExecuteCommand(aimAttackCommand);
             if(Input.GetMouseButtonDown(0))
             {
                 ICommand attackCommand = new AttackCommand(champion);
                 invoker.ExecuteCommand(attackCommand);
             }
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            invoker.UndoCommand();
         }
     }
     

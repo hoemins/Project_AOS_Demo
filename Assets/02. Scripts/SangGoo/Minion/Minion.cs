@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MinionInfo
 {
@@ -29,16 +32,21 @@ public class MinionInfo
 
 public class Minion : MonoBehaviour
 {
-    protected MinionInfo minionInfo;
+    public Transform goalPoint;
 
-    MinionBT minionBT;
+    protected MinionInfo minionInfo;
+    protected MinionBT minionBT;
+    protected Animator animator;
+    [SerializeField] protected NavMeshAgent navMeshAgent;
 
     [SerializeField] DetectComponent attackRangeDetect;
     [SerializeField] DetectComponent chaseRangeDetect;
 
-    private void Start()
+    protected void Start()
     {
         minionBT = GetComponent<MinionBT>();
+        animator = GetComponent<Animator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
 
         // 공격 파트
         minionBT.targetInAttackRange.action += () =>
@@ -64,7 +72,6 @@ public class Minion : MonoBehaviour
         };
 
         minionBT.attackAction.action += () => { Attack(); return INode.State.Run; };
-
 
         // 추격 파트
         minionBT.targetInChaseRange.action += () =>
@@ -95,19 +102,20 @@ public class Minion : MonoBehaviour
         minionBT.moveAction.action += () => { IdleMove(); return INode.State.Run; };
     }
 
-    public virtual void IdleMove()
+    protected virtual void IdleMove()
     {
-        Debug.Log("이동 중");
+        navMeshAgent.SetDestination(goalPoint.position);
     }
 
-    public virtual void ChaseMove()
+    protected virtual void ChaseMove()
     {
-        Debug.Log("추격 중");
+        navMeshAgent.SetDestination(chaseRangeDetect.targetCol.transform.position);
     }
 
-    public virtual void Attack()
+    protected virtual void Attack()
     {
-        Debug.Log("공격 중");
+        navMeshAgent.ResetPath();
+        Debug.Log("공격");
     }
 
     private void OnDrawGizmos()

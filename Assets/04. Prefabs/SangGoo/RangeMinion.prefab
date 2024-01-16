@@ -15224,10 +15224,11 @@ GameObject:
   m_Component:
   - component: {fileID: 453436}
   - component: {fileID: 9590802}
-  - component: {fileID: -7938588217972287683}
+  - component: {fileID: -2754030673455827363}
   - component: {fileID: 6186168623406023511}
   - component: {fileID: -8879882269900622163}
   - component: {fileID: 1630879410163645321}
+  - component: {fileID: 6672051536652433826}
   - component: {fileID: -2095041764411735050}
   - component: {fileID: 505193671966500395}
   m_Layer: 9
@@ -15275,7 +15276,7 @@ Animator:
   m_GameObject: {fileID: 186504}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6750944f6e7662742965b30ed5eaeae4, type: 3}
-  m_Controller: {fileID: 9100000, guid: f082dbbac2b2c61488c59cc75476a1cd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9479fc9afbe86884e8ee4dd453941083, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -15286,7 +15287,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-7938588217972287683
+--- !u!114 &-2754030673455827363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15295,13 +15296,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 186504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b07c05db38562a4fb32c4d71b52ca4b, type: 3}
+  m_Script: {fileID: 11500000, guid: c9d0fb6a7014dbc4abf7e48d834c8e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   goalPoint: {fileID: 0}
   navMeshAgent: {fileID: 0}
   attackRangeDetect: {fileID: -8879882269900622163}
   chaseRangeDetect: {fileID: 1630879410163645321}
+  expRangeDetect: {fileID: 0}
+  atkEffectObject: {fileID: 1228652472414832, guid: 30b5ad8c0c0cd79458001a1e81196835, type: 3}
+  atkEffectController: {fileID: 0}
 --- !u!114 &6186168623406023511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15348,6 +15352,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   detectRange: 30
+  colliders: []
+  targetCol: {fileID: 0}
+--- !u!114 &6672051536652433826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8db8c550a9e1a04cb1f82e821031025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  detectRange: 25
   colliders: []
   targetCol: {fileID: 0}
 --- !u!195 &-2095041764411735050

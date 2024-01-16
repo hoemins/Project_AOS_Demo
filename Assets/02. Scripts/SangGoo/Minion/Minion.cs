@@ -95,13 +95,14 @@ public class Minion : MonoBehaviour, IHitable
     public Type type;
     public Transform goalPoint;
 
-    protected MinionInfo minionInfo;
+    public MinionInfo minionInfo;
     protected MinionBT minionBT;
     protected Animator animator;
     [SerializeField] protected NavMeshAgent navMeshAgent;
 
-    [SerializeField] DetectComponent attackRangeDetect;
-    [SerializeField] DetectComponent chaseRangeDetect;
+    [SerializeField] protected DetectComponent attackRangeDetect;
+    [SerializeField] protected DetectComponent chaseRangeDetect;
+    [SerializeField] protected DetectComponent expRangeDetect;
 
     protected void Start()
     {
@@ -154,6 +155,17 @@ public class Minion : MonoBehaviour, IHitable
         OnDie += () => { IsDie = true; };
         OnDie += () => { attackRangeDetect.targetCol = null; };
         OnDie += () => { chaseRangeDetect.targetCol = null; };
+        OnDie += () =>
+        {
+            foreach(Collider col in expRangeDetect.Colliders)
+            {
+                if(col.TryGetComponent<Champion>(out var champion))
+                {
+                    // champion.CurExp += 10;
+                    break;
+                }
+            }
+        };
         OnDie += () => { PoolManager.instacne.ReturnPool(type, gameObject); };
     }
 
@@ -237,12 +249,19 @@ public class Minion : MonoBehaviour, IHitable
 
     private void OnDrawGizmos()
     {
+        // 추격 범위
         Gizmos.color = Color.blue;
         if (chaseRangeDetect != null)
             Gizmos.DrawWireSphere(transform.position, chaseRangeDetect.DetectRange);
 
+        // 공격 범위
         Gizmos.color = Color.red;
         if (attackRangeDetect != null)
             Gizmos.DrawWireSphere(transform.position, attackRangeDetect.DetectRange);
+
+        // 경험치 범위
+        Gizmos.color = Color.green;
+        if(expRangeDetect != null)
+            Gizmos.DrawWireSphere(transform.position, expRangeDetect.DetectRange);
     }
 }

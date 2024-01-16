@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CanonMinion : Minion
 {
+
+
     protected new void Start()
     {
         type = typeof(CanonMinion);
@@ -15,16 +17,27 @@ public class CanonMinion : Minion
 
     protected override void IdleMove()
     {
+        animator.SetInteger("CurState", (int)State.Move);
         base.IdleMove();
     }
 
     protected override void ChaseMove()
     {
+        animator.SetInteger("CurState", (int)State.Chase);
         base.ChaseMove();
     }
 
     protected override void Attack()
     {
+        animator.SetInteger("CurState", (int)State.Attack);
         base.Attack();
+    }
+
+    public override IEnumerator AttackDelayCo(IHitable target)
+    {
+        yield return new WaitForSeconds(AttackDelay);
+        animator.SetTrigger("Attack");
+        target.Hit(Atk);
+        attackDelayCo = null;
     }
 }

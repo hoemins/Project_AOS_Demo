@@ -19,6 +19,9 @@ public class PoolManager : MonoBehaviour
 
     public void CreatePool(Type type)
     {
+        if (type == null)
+            return;
+
         if (poolDic.ContainsKey(type))
             return;
 
@@ -34,12 +37,23 @@ public class PoolManager : MonoBehaviour
 
     public GameObject Dequeue(Type type)
     {
-        return poolDic[type]?.Dequeue();
+        if (poolDic.ContainsKey(type) == false)
+            return null;
+
+        return poolDic[type].Dequeue();
     }
 
     public void ReturnPool(Type type, GameObject go)
     {
+        if (poolDic.ContainsKey(type) == false)
+            return;
+
         go.SetActive(false);
         poolDic[type].Enqueue(go);
+    }
+
+    public int GetCount(Type type)
+    {
+        return poolDic[type].Count;
     }
 }

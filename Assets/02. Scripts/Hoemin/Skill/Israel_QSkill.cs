@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Israel_QSkill : Skill
 {
-
-
     public override void InvokeSkill()
     {
         if (IsCool)
@@ -29,7 +27,6 @@ public class Israel_QSkill : Skill
         Owner.MoveController.Agent.ResetPath();
         yield return new WaitForSeconds(0.5f);
         Owner.MoveController.Agent.isStopped = false;
-
     }
     public IEnumerator CoolTimeCor()
     {

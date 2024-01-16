@@ -46,6 +46,7 @@ public class ChampionStats
     [SerializeField] private int curMp;
     [SerializeField] private int maxMp;
 
+
     public int MaxHp { get { return maxHp; } set { maxHp = value; } }
     public int MaxMp { get {  return maxMp; } set { maxMp = value; } }
     public int CurHp 
@@ -66,6 +67,9 @@ public class ChampionStats
             curMp = value;
         }
     }
+
+    
+
 }
 
 
@@ -81,10 +85,13 @@ public abstract class Champion : MonoBehaviour
     [SerializeField] protected CHAMPION_STATE curState;
     [SerializeField] protected ChampionMoveController moveController;
     [SerializeField] protected List<Skill> skillList;
+    [SerializeField] private int curExp;
+    [SerializeField] private int aimExp;
+    public int skillPoint = 1;
     private Animator anim;
     private StateMachine<Champion> stateMachine;
+    Action onLevelup;
     Action onDie;
-
     //=============================프로퍼티======================================//
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } }
     public ChampionMoveController MoveController { get { return moveController; } }
@@ -92,6 +99,26 @@ public abstract class Champion : MonoBehaviour
     public ChampionStats ChampionStats { get { return championStats; } }
     public List<Skill> SkillList { get {  return skillList; } }
     public Animator Anim { get { return anim; } }
+    public int CurExp 
+    { 
+        get { return curExp; } 
+        set 
+        { 
+            if(curExp >= AimExp)
+            {
+                LevelUp(onLevelup);
+            }
+            curExp = value;
+        } 
+    }
+    public int AimExp 
+    { 
+        get { return aimExp; } 
+        set 
+        {
+            aimExp = value;
+        } 
+    }
     //===========================================================================//
 
 
@@ -111,10 +138,14 @@ public abstract class Champion : MonoBehaviour
 
     public abstract void InitChampionStats();
 
-
     public abstract void BasicAttack();
 
     public abstract Skill GetSkill(int index);
+
+    public void LevelUp(Action onLevelUp)
+    {
+        onLevelUp.Invoke();
+    }
 
     /// <summary>
     /// 상태 머신 초기화

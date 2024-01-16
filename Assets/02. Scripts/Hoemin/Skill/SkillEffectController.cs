@@ -20,7 +20,6 @@ namespace Hoemin
         private Rigidbody rb;
         private Vector3 direction;
 
-
         void Start()
         {
             rb = GetComponent<Rigidbody>();
@@ -103,54 +102,11 @@ namespace Hoemin
                     Destroy(gameObject);
                 }
 
+                
             }
             
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            // 맞았을 때 이펙트 생성하기
-            if (collision.gameObject.layer == targetLayer)
-            {
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-                moveSpeed = 0;
-
-                ContactPoint contact = collision.contacts[0];
-                Vector3 pos = contact.point + contact.normal * hitOffset;
-                Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-
-                if (hitEffectObj != null)
-                {
-                    var hitInstance = Instantiate(hitEffectObj, pos, rot);
-                    if (useFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
-                    else if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
-                    else { hitInstance.transform.LookAt(contact.point + contact.normal); }
-
-                    var hitPs = hitInstance.GetComponent<ParticleSystem>();
-                    if (hitPs != null)
-                    {
-                        Destroy(hitInstance, hitPs.main.duration);
-                    }
-                    else
-                    {
-                        var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
-                        Destroy(hitInstance, hitPsParts.main.duration);
-                    }
-                }
-                foreach (var detachedPrefab in detached)
-                {
-                    if (detachedPrefab != null)
-                    {
-                        detachedPrefab.transform.parent = null;
-                    }
-                }
-                Debug.Log("스킬 맞았다");
-                Destroy(gameObject);
-            }
-
-
-
-        }
 
     }
 

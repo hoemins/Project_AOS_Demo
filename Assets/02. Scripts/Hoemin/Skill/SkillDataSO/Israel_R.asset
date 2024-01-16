@@ -19,4 +19,4 @@ MonoBehaviour:
   comsumeMP: 40
   coolTime: 10
   skillEffect:
-  - {fileID: 1253354654402752, guid: 4f2c211b3d32c5f4fa7eb7687e824ca7, type: 3}
+  - {fileID: 1449260960837898, guid: f48a8770dbb43d047be2ddbb7a99bd71, type: 3}

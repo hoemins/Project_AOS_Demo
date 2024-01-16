@@ -28,7 +28,9 @@ public class Israel : Champion
         championinfo.PhsicalDef = 24;
         championinfo.MagicalResistance = 30;
         championinfo.AbilityHaste = 0;
-        championinfo.CriticalChance = 0.15f; 
+        championinfo.CriticalChance = 0.15f;
+        AimExp = championinfo.Level * 100;
+
     }
 
     public override Skill GetSkill(int index)

@@ -52,7 +52,9 @@ public class MeleeMinion : Minion
         animator.SetTrigger("Attack");
         GameObject poolObj = PoolManager.instacne.Dequeue(atkEffectController.type);
         poolObj.SetActive(true);
-        poolObj.transform.position = attackRangeDetect.targetCol.transform.position;
+        if(attackRangeDetect.targetCol != null)
+            poolObj.transform.position = attackRangeDetect.targetCol.transform.position;
+
         target.Hit(Atk);
         attackDelayCo = null;
     }

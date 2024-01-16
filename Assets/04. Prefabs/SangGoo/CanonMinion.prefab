@@ -15303,7 +15303,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   attackRangeDetect: {fileID: -8879882269900622163}
   chaseRangeDetect: {fileID: 1630879410163645321}
-  expRangeDetect: {fileID: 0}
+  expRangeDetect: {fileID: 4743424190814809430}
 --- !u!114 &6186168623406023511
 MonoBehaviour:
   m_ObjectHideFlags: 0

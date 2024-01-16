@@ -15303,7 +15303,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   attackRangeDetect: {fileID: -8879882269900622163}
   chaseRangeDetect: {fileID: 1630879410163645321}
-  expRangeDetect: {fileID: 0}
+  expRangeDetect: {fileID: 6672051536652433826}
   atkEffectObject: {fileID: 1228652472414832, guid: 30b5ad8c0c0cd79458001a1e81196835, type: 3}
   atkEffectController: {fileID: 0}
 --- !u!114 &6186168623406023511

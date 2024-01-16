@@ -14,22 +14,32 @@ public class Israel_QSkill : Skill
             Debug.Log("ÄðÅ¸ÀÓÁß");
             return;
         }
-        Owner.Anim.Play("Qskill");
-
-        Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
+        
         IsCool = true;
+        Owner.ChampionStats.CurMp -= Data.comsumeMP;
+        Owner.Anim.Play("Qskill");
+        Instantiate(Data.skillEffect[0], Owner.transform.position + Vector3.forward * 0.5f, Quaternion.identity);
+        StartCoroutine(DelayCor());
         StartCoroutine(CoolTimeCor());
     }
 
-    IEnumerator CoolTimeCor()
+    IEnumerator DelayCor()
+    {
+        Owner.MoveController.Agent.isStopped = true;
+        Owner.MoveController.Agent.ResetPath();
+        yield return new WaitForSeconds(0.5f);
+        Owner.MoveController.Agent.isStopped = false;
+
+    }
+    public IEnumerator CoolTimeCor()
     {
         float curTime = 0;
         while (IsCool)
         {
             curTime += Time.deltaTime;
-            if(curTime >= Data.coolTime)
+            if (curTime >= Data.coolTime)
             {
-                if(IsCool)
+                if (IsCool)
                 {
                     IsCool = false;
                     curTime = 0;
@@ -38,5 +48,4 @@ public class Israel_QSkill : Skill
             yield return null;
         }
     }
-
 }

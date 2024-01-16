@@ -13,14 +13,22 @@ public class Israel_RSkill : Skill
             Debug.Log("ÄðÅ¸ÀÓÁß");
             return;
         }
-        Owner.Anim.Play("Rskill");
 
-        Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
         IsCool = true;
+        Owner.ChampionStats.CurMp -= Data.comsumeMP;
+        Owner.Anim.Play("Rskill");
+        Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
+        StartCoroutine(DelayCor());
         StartCoroutine(CoolTimeCor());
     }
-
-    IEnumerator CoolTimeCor()
+    IEnumerator DelayCor()
+    {
+        Owner.MoveController.Agent.isStopped = true;
+        Owner.MoveController.Agent.ResetPath();
+        yield return new WaitForSeconds(0.5f);
+        Owner.MoveController.Agent.isStopped = false;
+    }
+    public IEnumerator CoolTimeCor()
     {
         float curTime = 0;
         while (IsCool)

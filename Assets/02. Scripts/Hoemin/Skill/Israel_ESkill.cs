@@ -12,15 +12,23 @@ public class Israel_ESkill : Skill
             Debug.Log("ÄðÅ¸ÀÓÁß");
             return;
         }
+        IsCool = true;
+        Owner.ChampionStats.CurMp -= Data.comsumeMP;
         Owner.Anim.Play("Eskill");
         Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
-
-        IsCool = true;
+        StartCoroutine(DelayCor());
         StartCoroutine(CoolTimeCor());
 
     }
+    IEnumerator DelayCor()
+    {
+        Owner.MoveController.Agent.isStopped = true;
+        Owner.MoveController.Agent.ResetPath();
+        yield return new WaitForSeconds(0.5f);
+        Owner.MoveController.Agent.isStopped = false;
 
-    IEnumerator CoolTimeCor()
+    }
+    public IEnumerator CoolTimeCor()
     {
         float curTime = 0;
         while (IsCool)

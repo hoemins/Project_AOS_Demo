@@ -17,7 +17,6 @@ namespace Hoemin
         [SerializeField] private GameObject[] detached;
         [SerializeField] private LayerMask targetLayer;
         [SerializeField] private Vector3 firePos;
-        [SerializeField] private Champion owner;
         private Rigidbody rb;
         private Vector3 direction;
 
@@ -73,7 +72,40 @@ namespace Hoemin
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                Debug.Log(other.gameObject.name + "스킬 맞았음");
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                moveSpeed = 0;
 
+                if(hitEffectObj != null)
+                {
+                    var hitInstance = Instantiate(hitEffectObj, transform.position, Quaternion.identity);
+                    var hitPs = hitInstance.GetComponent<ParticleSystem>();
+                    if (hitPs != null)
+                    {
+                        Destroy(hitInstance, hitPs.main.duration);
+                    }
+                    else
+                    {
+                        var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
+                        Destroy(hitInstance, hitPsParts.main.duration);
+                    }
+                    foreach (var detachedPrefab in detached)
+                    {
+                        if (detachedPrefab != null)
+                        {
+                            detachedPrefab.transform.parent = null;
+                        }
+                    }
+                    Destroy(gameObject);
+                }
+
+            }
+            
+        }
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -112,6 +144,7 @@ namespace Hoemin
                         detachedPrefab.transform.parent = null;
                     }
                 }
+                Debug.Log("스킬 맞았다");
                 Destroy(gameObject);
             }
 

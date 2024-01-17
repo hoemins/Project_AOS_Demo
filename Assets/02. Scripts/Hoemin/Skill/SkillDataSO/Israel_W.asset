@@ -18,5 +18,6 @@ MonoBehaviour:
   requiredLevel: 1
   comsumeMP: 20
   coolTime: 5
+  damage: 40
   skillEffect:
   - {fileID: 1033026374199576, guid: 6795a73db5c0c504e9d24ebebb7baece, type: 3}

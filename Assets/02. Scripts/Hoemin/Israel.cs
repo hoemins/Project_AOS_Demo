@@ -38,8 +38,4 @@ public class Israel : Champion
         return SkillList[index];
     }
 
-    public override void BasicAttack()
-    {
-        Debug.Log("이즈 기본공격");
-    }
 }

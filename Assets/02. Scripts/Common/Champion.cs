@@ -84,6 +84,7 @@ public abstract class Champion : MonoBehaviour
     [SerializeField] protected ChampionStats championStats;
     [SerializeField] protected CHAMPION_STATE curState;
     [SerializeField] protected ChampionMoveController moveController;
+    [SerializeField] protected ChampionAttackController attackController;
     [SerializeField] protected List<Skill> skillList;
     [SerializeField] private int curExp;
     [SerializeField] private int aimExp;
@@ -95,6 +96,7 @@ public abstract class Champion : MonoBehaviour
     //=============================프로퍼티======================================//
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } }
     public ChampionMoveController MoveController { get { return moveController; } }
+    public ChampionAttackController AttackController { get { return attackController; } }
     public ChampionInfo ChampionInfo { get {  return championinfo; } }
     public ChampionStats ChampionStats { get { return championStats; } }
     public List<Skill> SkillList { get {  return skillList; } }
@@ -138,7 +140,6 @@ public abstract class Champion : MonoBehaviour
 
     public abstract void InitChampionStats();
 
-    public abstract void BasicAttack();
 
     public abstract Skill GetSkill(int index);
 

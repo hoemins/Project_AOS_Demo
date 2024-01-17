@@ -94,7 +94,7 @@ namespace Hoemin
         public void Execute()
         {
             if (indicatorRenderer == null)
-                owner.BasicAttack();
+                owner.AttackController.Attack();
             indicatorRenderer?.DrawIndicator((int)indicatorEnum);
         }
 

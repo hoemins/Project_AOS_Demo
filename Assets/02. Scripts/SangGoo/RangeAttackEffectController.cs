@@ -20,7 +20,7 @@ public class RangeAttackEffectController<T> : MonoBehaviour where T : RangeAttac
         if (targetTransfrom != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetTransfrom.position, 0.1f);
-            if (Vector3.Distance(transform.position, targetTransfrom.position) <= 0.3f)
+            if (Vector3.Distance(transform.position, targetTransfrom.position) <= 0.1f)
                 hitAction();
         }
         else

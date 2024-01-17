@@ -20,7 +20,7 @@ public class MinionSpanwer : MonoBehaviour
     private void Start()
     {
         curSpanwCount = 0;
-        curWave = 0;
+        curWave = 2;
 
         meleeMinionType = typeof(MeleeMinion);
         rangeMinionType = typeof(RangeMinion);

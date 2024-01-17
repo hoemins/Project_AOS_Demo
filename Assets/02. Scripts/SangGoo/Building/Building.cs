@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class BuildingInfo
@@ -54,6 +55,12 @@ public class Building : MonoBehaviour, IHitable
         }
     }
 
+    public bool IsDie
+    {
+        get => isDie;
+    }
+    private bool isDie = false;
+
     protected void Start()
     {
         OnHit += (int value) => { Hp -= value; };
@@ -66,6 +73,7 @@ public class Building : MonoBehaviour, IHitable
 
     public void Destroy()
     {
+        isDie = true;
         OnDestroy();
     }
 }

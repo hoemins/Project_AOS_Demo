@@ -7,6 +7,7 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager instacne;
+
     public Dictionary<Type, Queue<GameObject>> poolDic = new Dictionary<Type, Queue<GameObject>>();
 
     private void Awake()

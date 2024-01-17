@@ -15304,6 +15304,8 @@ MonoBehaviour:
   attackRangeDetect: {fileID: -8879882269900622163}
   chaseRangeDetect: {fileID: 1630879410163645321}
   expRangeDetect: {fileID: 4743424190814809430}
+  atkEffectObject: {fileID: 1047741547062842, guid: 6089164a6c06f6546878d434caa9a719, type: 3}
+  atkEffectController: {fileID: 0}
 --- !u!114 &6186168623406023511
 MonoBehaviour:
   m_ObjectHideFlags: 0

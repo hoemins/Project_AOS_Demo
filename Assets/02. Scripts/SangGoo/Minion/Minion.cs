@@ -42,7 +42,7 @@ public class MinionInfo
     }
 }
 
-public class Minion : MonoBehaviour, IHitable
+public class Minion : MonoBehaviour, IHitable, IAttackable
 {
     protected enum State
     {
@@ -184,7 +184,7 @@ public class Minion : MonoBehaviour, IHitable
         navMeshAgent.SetDestination(chaseRangeDetect.targetCol.transform.position);
     }
 
-    protected virtual void Attack()
+    public virtual void Attack()
     {
         navMeshAgent.ResetPath();
         if(attackRangeDetect.targetCol.TryGetComponent<IHitable>(out var target))
@@ -219,7 +219,7 @@ public class Minion : MonoBehaviour, IHitable
         }
         else
         {
-            if(detectComponent.targetCol.TryGetComponent<Minion>(out var target))
+            if(detectComponent.targetCol.TryGetComponent<IHitable>(out var target))
             {
                 if(target.IsDie)
                 {

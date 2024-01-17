@@ -18,7 +18,6 @@ public class MeleeMinion : Minion
         minionInfo = new MinionInfo(100, 10, 5, 5, 1.0f, 3.0f);
         atkEffectController = atkEffectObject.GetComponent<MeleeMinionAttackEffectController>();
 
-        atkEffectController.SetOwner(this);
         PoolManager.instacne.CreatePool(atkEffectController.type);
 
         if(PoolManager.instacne.GetCount(atkEffectController.type) < 30)
@@ -40,7 +39,7 @@ public class MeleeMinion : Minion
         base.ChaseMove();
     }
 
-    protected override void Attack()
+    public override void Attack()
     {
         animator.SetInteger("CurState", (int)State.Attack);
         base.Attack();

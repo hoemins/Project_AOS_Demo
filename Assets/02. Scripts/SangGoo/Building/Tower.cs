@@ -28,6 +28,14 @@ public class Tower : Building, IAttackable
         buildingInfo = new BuildingInfo("Tower", 1000, 0, 0);
         detectComponent = GetComponent<DetectComponent>();
         atkEffectController = targetObj.GetComponent<TowerAttackEffectController>();
+
+        PoolManager.instacne.CreatePool(atkEffectController.type);
+
+        if (PoolManager.instacne.GetCount(atkEffectController.type) <= 30)
+        {
+            for (int i = 0; i < 10; i++)
+                PoolManager.instacne.Enqueue(atkEffectController.type, targetObj);
+        }
     }
 
     private void Update()
@@ -51,12 +59,23 @@ public class Tower : Building, IAttackable
         }
     }
 
-
     public IEnumerator AttackDelayCo(IHitable target)
     {
         yield return new WaitForSeconds(PhysicalAtkDelay);
-        Debug.Log("타워의 공격");
-        target.Hit(PhysicalAtk);
+        GameObject poolObj = PoolManager.instacne.Dequeue(atkEffectController.type);
+
+        Vector3 atkPos = transform.position;
+        atkPos.y += 8.0f;
+
+        poolObj.transform.position = atkPos;
+        if (poolObj.TryGetComponent<TowerAttackEffectController>(out var controller))
+        {
+            controller.hitAction += () => { target.Hit(PhysicalAtk); };
+            if (detectComponent.targetCol != null)
+                controller.SetTarget(detectComponent.targetCol.transform);
+        }
+        poolObj.SetActive(true);
+
         attackDelayCo = null;
     }
     public void SetTarget()

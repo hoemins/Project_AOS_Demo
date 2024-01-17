@@ -7,12 +7,14 @@ using UnityEngine;
 public interface IHitable
 {
     int Hp { get; set; }
+    bool IsDie { get; }
     void Hit(int value);
 }
 
+
 public interface IAttackable
 {
-    void PhysicalAttack();
+    void Attack();
 }
 
 public interface ISkillAttackable

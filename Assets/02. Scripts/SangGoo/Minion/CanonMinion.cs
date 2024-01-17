@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CanonMinion : Minion
 {
-
+    public GameObject atkEffectObject;
+    [SerializeField] CanonMinionAttackEffectController atkEffectController;
 
     protected new void Start()
     {
@@ -13,6 +14,16 @@ public class CanonMinion : Minion
         base.Start();
         // 체력, 공격력, 방어력, 마법저항력, 공격속도, 이동속도
         minionInfo = new MinionInfo(300, 40, 10, 10, 1.0f, 3.0f);
+        
+        atkEffectController = atkEffectObject.GetComponent<CanonMinionAttackEffectController>();
+
+        PoolManager.instacne.CreatePool(atkEffectController.type);
+
+        if (PoolManager.instacne.GetCount(atkEffectController.type) < 60)
+        {
+            for (int i = 0; i < 10; i++)
+                PoolManager.instacne.Enqueue(atkEffectController.type, atkEffectObject);
+        }
     }
 
     protected override void IdleMove()
@@ -27,7 +38,7 @@ public class CanonMinion : Minion
         base.ChaseMove();
     }
 
-    protected override void Attack()
+    public override void Attack()
     {
         animator.SetInteger("CurState", (int)State.Attack);
         base.Attack();
@@ -37,7 +48,17 @@ public class CanonMinion : Minion
     {
         yield return new WaitForSeconds(AttackDelay);
         animator.SetTrigger("Attack");
-        target.Hit(Atk);
+        GameObject poolObj = PoolManager.instacne.Dequeue(atkEffectController.type);
+
+        poolObj.transform.position = transform.position;
+        if (poolObj.TryGetComponent<CanonMinionAttackEffectController>(out var controller))
+        {
+            controller.hitAction += () => { target.Hit(Atk); };
+            if (attackRangeDetect.targetCol != null)
+                controller.SetTarget(attackRangeDetect.targetCol.transform);
+        }
+        poolObj.SetActive(true);
+
         attackDelayCo = null;
     }
 }

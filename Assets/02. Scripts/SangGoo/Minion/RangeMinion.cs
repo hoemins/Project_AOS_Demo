@@ -17,12 +17,11 @@ public class RangeMinion : Minion
 
         atkEffectController = atkEffectObject.GetComponent<RangeMinionAttackEffectController>();
 
-        atkEffectController.SetOwner(this);
         PoolManager.instacne.CreatePool(atkEffectController.type);
 
-        if (PoolManager.instacne.GetCount(atkEffectController.type) < 30)
+        if (PoolManager.instacne.GetCount(atkEffectController.type) < 60)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
                 PoolManager.instacne.Enqueue(atkEffectController.type, atkEffectObject);
         }
     }
@@ -39,7 +38,7 @@ public class RangeMinion : Minion
         base.ChaseMove();
     }
 
-    protected override void Attack()
+    public override void Attack()
     {
         animator.SetInteger("CurState", (int)State.Attack);
         base.Attack();
@@ -49,7 +48,17 @@ public class RangeMinion : Minion
     {
         yield return new WaitForSeconds(AttackDelay);
         animator.SetTrigger("Attack");
-        target.Hit(Atk);
+        GameObject poolObj = PoolManager.instacne.Dequeue(atkEffectController.type);
+
+        poolObj.transform.position = transform.position;
+        if (poolObj.TryGetComponent<RangeMinionAttackEffectController>(out var controller))
+        {
+            controller.hitAction += () => { target.Hit(Atk); };
+            if (attackRangeDetect.targetCol != null)
+                controller.SetTarget(attackRangeDetect.targetCol.transform);
+        }
+        poolObj.SetActive(true);
+
         attackDelayCo = null;
     }
 }

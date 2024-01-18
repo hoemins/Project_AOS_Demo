@@ -59,6 +59,7 @@ public class Minion : MonoBehaviour, IHitable, IAttackable
         set
         {
             minionInfo.Hp = value;
+            minionUIController.SetHpbar(minionInfo.Hp, minionInfo.MaxHp);
             if (minionInfo.Hp > minionInfo.MaxHp)
                 minionInfo.Hp = minionInfo.MaxHp;
 
@@ -103,7 +104,7 @@ public class Minion : MonoBehaviour, IHitable, IAttackable
     [SerializeField] protected DetectComponent attackRangeDetect;
     [SerializeField] protected DetectComponent chaseRangeDetect;
     [SerializeField] protected DetectComponent expRangeDetect;
-
+    [SerializeField] protected MinionUIController minionUIController;
     protected void Start()
     {
         minionBT = GetComponent<MinionBT>();
@@ -172,6 +173,11 @@ public class Minion : MonoBehaviour, IHitable, IAttackable
     private void OnEnable()
     {
         IsDie = false;
+    }
+
+    public void Update()
+    {
+        minionUIController.SetUIPos();
     }
 
     protected virtual void IdleMove()

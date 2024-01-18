@@ -42,6 +42,7 @@ public class UIManager : Singleton<UIManager>
                 else
                     skillSlots[i].disabledLevelUpImg.gameObject.SetActive(true);
             }
+            
         };
     }
 

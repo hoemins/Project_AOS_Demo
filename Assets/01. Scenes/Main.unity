@@ -3186,8 +3186,6 @@ MonoBehaviour:
   - {fileID: 1904574957}
   - {fileID: 1894075491}
   - {fileID: 698566916}
-  - {fileID: 1502185835}
-  - {fileID: 1203038657}
 --- !u!4 &109972401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7637223532925899579, guid: 604851b211ba4b74f84404b72d46f1cd, type: 3}
@@ -3292,6 +3290,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 106915983}
     m_Modifications:
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1952874835}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5103091513402996449}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSkillLevelUpButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LevelUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Israel_WSkill, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 534916730573534871, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3388,6 +3406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillSolt (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7691079647830362353, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 5103091513402996449}
     - target: {fileID: 7691079647830362353, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
       propertyPath: skillImg
       value: 
@@ -22002,6 +22024,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 106915983}
     m_Modifications:
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1952874835}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3482777391304972662}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSkillLevelUpButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LevelUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Israel_RSkill, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3224462630482342796, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -22094,6 +22136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillSolt (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7691079647830362353, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 3482777391304972662}
     - target: {fileID: 7691079647830362353, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -29813,7 +29859,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9518892c468dec640a94e522df0cdbe9, type: 3}
   m_Name: 
@@ -38125,6 +38171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpellSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8724754377197412784, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8724754377197412785, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -43842,6 +43892,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 106915983}
     m_Modifications:
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1952874835}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2376117845186408655}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSkillLevelUpButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LevelUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Israel_ESkill, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3224462630482342796, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -43934,6 +44004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillSolt (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7691079647830362353, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 2376117845186408655}
     - target: {fileID: 7691079647830362353, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -72420,6 +72494,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 106915983}
     m_Modifications:
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1952874835}
+    - target: {fileID: 1015044575, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2199406537190427814}
     - target: {fileID: 3224462630482342796, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -72508,6 +72590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillSolt
       objectReference: {fileID: 0}
+    - target: {fileID: 7691079647830362353, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 2199406537190427814}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd8c50a85f5eef84e8eb0e3d0e5bd00a, type: 3}
 --- !u!224 &8021993143347763404 stripped
@@ -73393,6 +73479,10 @@ PrefabInstance:
     - target: {fileID: 8724754377197412784, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
       propertyPath: m_Name
       value: SpellSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724754377197412784, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8724754377197412785, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
       propertyPath: m_Pivot.x

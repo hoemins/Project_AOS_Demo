@@ -24,7 +24,7 @@ public class SkillSlotManager : MonoBehaviour
 
     public void InitSlot()
     {
-        for (int i = 0; i < skillSolts.Length -2; i++)
+        for (int i = 0; i < skillSolts.Length ; i++)
         {
             skillSolts[i].skillImg.sprite = owner.SkillList[i].Data.skillImg;
             skillSolts[i].skillCoolImg.sprite = owner.SkillList[i].Data.skillImg;

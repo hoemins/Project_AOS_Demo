@@ -15,9 +15,8 @@ MonoBehaviour:
   skillImg: {fileID: 21300000, guid: 27942b10667724d449423412c29bd20b, type: 3}
   skillName: Aimed Strike
   level: 1
-  requiredLevel: 2
+  requiredLevel: 5
   comsumeMP: 40
   coolTime: 10
-  damage: 100
   skillEffect:
   - {fileID: 1449260960837898, guid: f48a8770dbb43d047be2ddbb7a99bd71, type: 3}

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SkillSlot : MonoBehaviour
 {
+    public Skill skill;
     public Image skillImg;
     public Image skillCoolImg;
     public Image enableLevelUpImg;

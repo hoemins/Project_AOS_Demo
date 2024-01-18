@@ -47,5 +47,13 @@ public class Israel_WSkill : Skill
             yield return null;
         }
     }
+
+    public override void LevelUp()
+    {
+        if (Owner.SkillList[1].Data.level > 5) return;
+        Owner.SkillList[1].Data.level++;
+        Owner.SkillList[1].gameObject.GetComponent<SkillAttack>().Damage += 30;
+        Owner.SkillList[1].Data.coolTime *= 0.7f;
+    }
 }
 

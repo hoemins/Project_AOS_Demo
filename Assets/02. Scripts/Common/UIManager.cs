@@ -27,11 +27,22 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] TextMeshProUGUI myLevelText;
     [SerializeField] Inventory myInven;
     [SerializeField] TextMeshProUGUI myMoneyText;
-    [SerializeField] GameObject[] skillSlots;
+    [SerializeField] SkillSlot[] skillSlots;
 
-    private void Start()
+    public override void Awake()
     {
+        base.Awake();
         InitChampionStats();
+        myChampion.onLevelup += () =>
+        {
+            for (int i = 0; skillSlots.Length > 0; i++)
+            {
+                if (myChampion.ChampionInfo.Level >= skillSlots[i].skill.Data.requiredLevel)
+                    skillSlots[i].enableLevelUpImg.gameObject.SetActive(true);
+                else
+                    skillSlots[i].disabledLevelUpImg.gameObject.SetActive(true);
+            }
+        };
     }
 
     private void Update()
@@ -63,5 +74,16 @@ public class UIManager : Singleton<UIManager>
         
     }
    
+
+    public void OnSkillLevelUpButtonClick()
+    {
+        myChampion.skillPoint--;
+        for (int i = 0; skillSlots.Length > 0; i++)
+        {
+            skillSlots[i].enableLevelUpImg.gameObject.SetActive(false);
+            skillSlots[i].disabledLevelUpImg.gameObject.SetActive(false);
+                
+        }
+    }
 
 }

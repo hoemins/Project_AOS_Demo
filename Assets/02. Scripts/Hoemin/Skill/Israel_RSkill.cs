@@ -45,4 +45,11 @@ public class Israel_RSkill : Skill
             yield return null;
         }
     }
+
+    public override void LevelUp()
+    {
+        if (Owner.SkillList[3].Data.level > 3) return;
+        Owner.SkillList[3].Data.level++;
+        Owner.SkillList[3].gameObject.GetComponent<SkillAttack>().Damage += 30;
+    }
 }

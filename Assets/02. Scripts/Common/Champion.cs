@@ -92,7 +92,7 @@ public abstract class Champion : MonoBehaviour
     private Animator anim;
     private StateMachine<Champion> stateMachine;
     public Action onLevelup;
-    Action onDie;
+    public Action onDie;
     //=============================프로퍼티======================================//
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } }
     public ChampionMoveController MoveController { get { return moveController; } }
@@ -108,7 +108,7 @@ public abstract class Champion : MonoBehaviour
         { 
             if(curExp >= AimExp)
             {
-                LevelUp(onLevelup);
+                onLevelup();
             }
             curExp = value;
         } 
@@ -131,6 +131,12 @@ public abstract class Champion : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         InitState();
         InitChampionInfo();
+        
+    }
+    private void Start()
+    {
+        onLevelup += LevelUp;
+        onLevelup();
     }
 
     /// <summary>
@@ -143,13 +149,13 @@ public abstract class Champion : MonoBehaviour
 
     public abstract Skill GetSkill(int index);
 
-    public void LevelUp(Action onLevelUp)
+    public void LevelUp()
     {
         championinfo.Level++;
         skillPoint++;
         CurExp = 0;
         AimExp = championinfo.Level * 200;
-        onLevelUp?.Invoke();
+        Debug.Log("렙업");
     }
 
     /// <summary>

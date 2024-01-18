@@ -10,6 +10,8 @@ public class SkillAttack : MonoBehaviour
     SkillEffectController skillEffectController;
     private Champion owner;
 
+    public int Damage { get { return damage; }   set { damage = value; } }
+
     private void Start()
     {
         owner = GetComponentInParent<Champion>();

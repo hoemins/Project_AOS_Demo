@@ -24,7 +24,7 @@ public class Tower : Building, IAttackable
         base.Start();
 
         physicalAtk = 30;
-        physicalAtkDelay = 1.2f;
+        physicalAtkDelay = 2.0f;
 
         buildingInfo = new BuildingInfo("Tower", 1000, 0, 0);
         detectComponent = GetComponent<DetectComponent>();
@@ -40,8 +40,9 @@ public class Tower : Building, IAttackable
         }
     }
 
-    private void Update()
+    private new void Update()
     {
+        base.Update();
         if (detectComponent.IsDetected)
         {
             SetTarget();

@@ -38,17 +38,19 @@ public class BuildingInfo
 public class Building : MonoBehaviour, IHitable
 {
     public BuildingInfo buildingInfo;
-    
+    [SerializeField] NonPlayerUIController uiController;
+
     public Action OnDestroy;
     public Action<int> OnHit;
 
-    public int Hp
+    public virtual int Hp
     {
         get => buildingInfo.Hp;
         set
         {
             buildingInfo.Hp = value;
-            if(buildingInfo.Hp <= 0)
+            uiController.SetHpbar(buildingInfo.Hp, buildingInfo.MaxHp);
+            if (buildingInfo.Hp <= 0)
             {
                 Destroy();
             }
@@ -64,6 +66,12 @@ public class Building : MonoBehaviour, IHitable
     protected void Start()
     {
         OnHit += (int value) => { Hp -= value; };
+        //uiController.SetUIPos();
+    }
+
+    protected void Update()
+    {
+        uiController.SetUIPos();
     }
 
     public void Hit(int value)

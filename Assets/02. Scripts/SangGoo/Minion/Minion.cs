@@ -52,7 +52,7 @@ public class Minion : MonoBehaviour, IHitable, IAttackable
         Attack
     }
 
-    public int Hp
+    public virtual int Hp
     {
         get => minionInfo.Hp;
 
@@ -72,12 +72,12 @@ public class Minion : MonoBehaviour, IHitable, IAttackable
     }
     public Action OnDie;
     
-    public int Atk
+    public virtual int Atk
     {
         get => minionInfo.PhysicalAtk;
     }
 
-    public float AttackDelay
+    public virtual float AttackDelay
     {
         get => minionInfo.PhysicalAtkDelay;
     }
@@ -104,7 +104,7 @@ public class Minion : MonoBehaviour, IHitable, IAttackable
     [SerializeField] protected DetectComponent attackRangeDetect;
     [SerializeField] protected DetectComponent chaseRangeDetect;
     [SerializeField] protected DetectComponent expRangeDetect;
-    [SerializeField] protected MinionUIController minionUIController;
+    [SerializeField] protected NonPlayerUIController minionUIController;
     protected void Start()
     {
         minionBT = GetComponent<MinionBT>();

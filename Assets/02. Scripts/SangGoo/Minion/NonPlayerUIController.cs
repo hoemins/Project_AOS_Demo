@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinionUIController : MonoBehaviour
+public class NonPlayerUIController : MonoBehaviour
 {
     public Image hpBar;
 

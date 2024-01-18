@@ -10,6 +10,7 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
     {
         [Header("챔피언 이동")]
         [SerializeField] private GameObject markerObject;
+        public Transform billboard;
         private const int rotSpeed = 8;
         NavMeshAgent agent;
 
@@ -27,6 +28,7 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
         private void Update()
         {
             Move();
+            billboard.LookAt(billboard.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
         }
 
         public void Move()
@@ -40,6 +42,7 @@ namespace Hoemin // 네임스페이스 구분하여 사용할 것
                     var marker = markerPool.Get();
                     marker.transform.position = hitInfo.point;
                 }
+
             }
 
             if (agent.desiredVelocity.sqrMagnitude >= 0.1f)

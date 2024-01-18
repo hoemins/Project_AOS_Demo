@@ -15,6 +15,7 @@ public class Tower : Building, IAttackable
     DetectComponent detectComponent;
     [SerializeField] GameObject targetObj;
     [SerializeField] TowerAttackEffectController atkEffectController;
+    [SerializeField] LineRenderer lineRenderer;
     protected IEnumerator attackDelayCo;
 
 
@@ -28,6 +29,7 @@ public class Tower : Building, IAttackable
         buildingInfo = new BuildingInfo("Tower", 1000, 0, 0);
         detectComponent = GetComponent<DetectComponent>();
         atkEffectController = targetObj.GetComponent<TowerAttackEffectController>();
+        lineRenderer = GetComponent<LineRenderer>();
 
         PoolManager.instacne.CreatePool(atkEffectController.type);
 
@@ -43,9 +45,15 @@ public class Tower : Building, IAttackable
         if (detectComponent.IsDetected)
         {
             SetTarget();
-            if(detectComponent.targetCol != null)
+            if (detectComponent.targetCol != null)
+            {
+                DrawAttackLine(detectComponent.targetCol.transform.position);
                 Attack();
+            }
         }
+
+        if(detectComponent.targetCol == null)
+            lineRenderer.enabled = false;
     }
     public void Attack()
     {
@@ -113,6 +121,15 @@ public class Tower : Building, IAttackable
             }
         }
 
+    }
+
+    public void DrawAttackLine(Vector3 targetPos)
+    {
+        lineRenderer.enabled = true;
+        Vector3 pos = transform.position;
+        pos.y += 8.0f;
+        lineRenderer.SetPosition(0, pos);
+        lineRenderer.SetPosition(1, targetPos);
     }
 
     private void OnDrawGizmos()

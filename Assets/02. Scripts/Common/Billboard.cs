@@ -12,5 +12,4 @@ public class Billboard : MonoBehaviour
         canvas = GetComponent<Canvas>();
         canvas.transform.forward = billboardCam.transform.position - transform.position;
     }
-
 }

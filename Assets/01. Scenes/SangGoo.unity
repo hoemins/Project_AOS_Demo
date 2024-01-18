@@ -29738,7 +29738,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9518892c468dec640a94e522df0cdbe9, type: 3}
   m_Name: 
@@ -30637,6 +30637,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4563579759187717251, guid: 690df804059830444ae21cf7e2a23603, type: 3}
   m_PrefabInstance: {fileID: 872770486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &992676038 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8740393121327382405, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
+  m_PrefabInstance: {fileID: 1918403526}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &994774713 stripped
 Transform:
@@ -32911,6 +32916,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6050359151736343593, guid: 4e0dd69d5f43078468aefb41d966bca3, type: 3}
   m_PrefabInstance: {fileID: 1361321047}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1072172505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1803336649373334497, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
+  m_PrefabInstance: {fileID: 1918403526}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c57d585f4a9d94298a355c081cb39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1077253945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57378,6 +57394,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 506523209, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
+      propertyPath: billboardCam
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 360665268026369486, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
+      propertyPath: billboard
+      value: 
+      objectReference: {fileID: 992676038}
+    - target: {fileID: 360665268026369486, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 360665268026369487, guid: e360f68a462650c4aa8fddb33d782cf4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -58727,7 +58755,7 @@ MonoBehaviour:
   enemyProfile: {fileID: 1892457024}
   enemyInven: {fileID: 51559827}
   enemyLevelText: {fileID: 632539539}
-  myChampion: {fileID: 0}
+  myChampion: {fileID: 1072172505}
   myStatsText:
   - {fileID: 4913435938509554617}
   - {fileID: 6388244775814364037}

@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SKILLTYPE
+{
+    DEFAULT, BUFF, 
+}
+
 [CreateAssetMenu]
-public class SkillData : ScriptableObject
+public class SkillData : ScriptableObject, ISerializationCallbackReceiver
 {
     public Sprite skillImg;
     public string skillName;
@@ -11,7 +16,16 @@ public class SkillData : ScriptableObject
     public int requiredLevel;
     public int comsumeMP;
     public float coolTime;
-    public int damage;
     
     public GameObject[] skillEffect;
+
+    public void OnAfterDeserialize()
+    {
+        level = 1;
+    }
+
+    public void OnBeforeSerialize()
+    {
+        
+    }
 }

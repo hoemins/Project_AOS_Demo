@@ -91,7 +91,7 @@ public abstract class Champion : MonoBehaviour
     public int skillPoint = 1;
     private Animator anim;
     private StateMachine<Champion> stateMachine;
-    Action onLevelup;
+    public Action onLevelup;
     Action onDie;
     //=============================프로퍼티======================================//
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } }
@@ -145,7 +145,11 @@ public abstract class Champion : MonoBehaviour
 
     public void LevelUp(Action onLevelUp)
     {
-        onLevelUp.Invoke();
+        championinfo.Level++;
+        skillPoint++;
+        CurExp = 0;
+        AimExp = championinfo.Level * 200;
+        onLevelUp?.Invoke();
     }
 
     /// <summary>

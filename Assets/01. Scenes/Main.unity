@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12983368, g: 0.04271781, b: 0.073275946, a: 1}
+  m_IndirectSpecularColor: {r: 0.12966555, g: 0.042591076, b: 0.07321723, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -63281,9 +63281,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132143831}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41, y: 0, z: 73.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -1.3877786e-16, w: 1}
+  m_LocalPosition: {x: 41.000015, y: 0.00000047683716, z: 73.7}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1017430673}
@@ -64697,6 +64697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7232442708485006764}
   - component: {fileID: 3482777391304972662}
+  - component: {fileID: 7232442708485006765}
   m_Layer: 8
   m_Name: RSkill
   m_TagString: Untagged
@@ -66500,7 +66501,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21924644286a5a0419c2471687ab75b0, type: 2}
+  - {fileID: 2100000, guid: d7320504ab3a18f45ac1a6b4139e5198, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68347,6 +68348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2540200410075816950}
   - component: {fileID: 2199406537190427814}
+  - component: {fileID: 4261925708773893918}
   m_Layer: 8
   m_Name: QSkill
   m_TagString: Untagged
@@ -68354,6 +68356,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4261925708773893918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4261925708773893917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8284e63d765c774d931de3da515121a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 120
+  skillObject: {fileID: 1519322442116508, guid: 8f605a00280b16b43bb4b0babb6b61fd, type: 3}
 --- !u!4 &4290831292251728404
 Transform:
   m_ObjectHideFlags: 0
@@ -70853,6 +70869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7884183127969018892}
   - component: {fileID: 5103091513402996449}
+  - component: {fileID: 7884183127969018893}
   m_Layer: 8
   m_Name: WSkill
   m_TagString: Untagged
@@ -71003,6 +71020,20 @@ Transform:
   m_Father: {fileID: 9144063353460571637}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7232442708485006765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646659563873300787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8284e63d765c774d931de3da515121a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 180
+  skillObject: {fileID: 1449260960837898, guid: f48a8770dbb43d047be2ddbb7a99bd71, type: 3}
 --- !u!222 &7248277121517455954
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -72304,6 +72335,20 @@ Transform:
   m_Father: {fileID: 9144063353460571637}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7884183127969018893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6953939751126938458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8284e63d765c774d931de3da515121a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
+  skillObject: {fileID: 1033026374199576, guid: 6795a73db5c0c504e9d24ebebb7baece, type: 3}
 --- !u!1 &7901174573905869833
 GameObject:
   m_ObjectHideFlags: 0
@@ -73889,6 +73934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1996622015460090686}
   - component: {fileID: 2376117845186408655}
+  - component: {fileID: 9100173737354979951}
   m_Layer: 8
   m_Name: ESkill
   m_TagString: Untagged
@@ -73896,6 +73942,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9100173737354979951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100173737354979950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8284e63d765c774d931de3da515121a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 60
+  skillObject: {fileID: 1585743060672840, guid: b0948e2441921d44d9655a099f609aa0, type: 3}
 --- !u!4 &9106084702898905003
 Transform:
   m_ObjectHideFlags: 0

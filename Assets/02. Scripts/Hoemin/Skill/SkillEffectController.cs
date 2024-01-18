@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
-
+using System;
 namespace Hoemin
 {
     public class SkillEffectController : MonoBehaviour
@@ -19,6 +19,8 @@ namespace Hoemin
         [SerializeField] private Vector3 firePos;
         private Rigidbody rb;
         private Vector3 direction;
+
+        public Action<IHitable> atkAction;
 
         void Start()
         {
@@ -73,13 +75,18 @@ namespace Hoemin
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            
+
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && other.TryGetComponent<IHitable>(out var target))
             {
                 Debug.Log(other.gameObject.name + "스킬 맞았음");
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 moveSpeed = 0;
+                
+                atkAction(target);
+                
 
-                if(hitEffectObj != null)
+                if (hitEffectObj != null)
                 {
                     var hitInstance = Instantiate(hitEffectObj, transform.position, Quaternion.identity);
                     var hitPs = hitInstance.GetComponent<ParticleSystem>();

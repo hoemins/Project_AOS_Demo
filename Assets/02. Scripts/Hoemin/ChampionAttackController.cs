@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChampionAttackController : MonoBehaviour, IAttackable
 {
     Champion champion;
+    IHitable target;
 
     private void Start()
     {
@@ -13,6 +14,7 @@ public class ChampionAttackController : MonoBehaviour, IAttackable
 
     public void Attack()
     {
+        
         Debug.Log("기본 공격 발싸");
     }
 

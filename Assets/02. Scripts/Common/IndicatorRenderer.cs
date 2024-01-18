@@ -21,6 +21,12 @@ namespace Hoemin
 
         public void DrawIndicator(int index)
         {
+            if(index == (int)INDICATOR_ENUM.Attack)
+            {
+                indicators[index].SetActive(true);
+                return;
+            }
+
             if (owner.SkillList[index].IsCool) return;
             Debug.Log("스킬 조준 표시");
             indicators[index].SetActive(true);

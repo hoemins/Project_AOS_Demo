@@ -6,6 +6,7 @@ using UnityEngine;
 public class Israel_WSkill : Skill
 {
 
+
     public override void InvokeSkill()
     {
         if (IsCool)

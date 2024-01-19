@@ -4825,7 +4825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c768e2338a27b94b8fbdf678dabd7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 10
   skillRange: 20
   hitOffset: 0.1
   useFirePointRotation: 0

@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class Israel_ESkill : Skill
 {
+    Ray ray;
+    RaycastHit hit;
+    [SerializeField] private float range = 8f;
+
+    private void Update()
+    {
+        ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
+        
+        // 이 비어있는 조건문이 있어야 올바르게 작동
+        // 이유..? 모르겠음
+        if (Physics.Raycast(ray, out hit))
+        {
+            
+        }
+    }
+
 
     public override void InvokeSkill()
     {
@@ -12,10 +28,19 @@ public class Israel_ESkill : Skill
             Debug.Log("쿨타임중");
             return;
         }
+
+        if (Vector3.Distance(Owner.transform.position, hit.transform.position) > range)
+            return;
+
+
         IsCool = true;
         Owner.ChampionStats.CurMp -= Data.comsumeMP;
         Owner.Anim.Play("Eskill");
         Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
+        Instantiate(Data.skillEffect[1], Owner.transform.position, Quaternion.identity);
+
+        Owner.transform.position = hit.point;
+
         StartCoroutine(DelayCor());
         StartCoroutine(CoolTimeCor());
 

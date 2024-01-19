@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12966555, g: 0.042591076, b: 0.07321723, a: 1}
+  m_IndirectSpecularColor: {r: 0.12983368, g: 0.04271781, b: 0.073275946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -38173,7 +38173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8724754377197412784, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8724754377197412785, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
       propertyPath: m_Pivot.x
@@ -65022,7 +65022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &919132149491264989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -66382,6 +66382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c834f6ca543f57244beab9c5a52e00fa, type: 2}
+  range: 8
 --- !u!1 &2410598650064520911
 GameObject:
   m_ObjectHideFlags: 0
@@ -73482,7 +73483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8724754377197412784, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8724754377197412785, guid: 4b3aa87c7dca41c4784c4410e4287cb2, type: 3}
       propertyPath: m_Pivot.x

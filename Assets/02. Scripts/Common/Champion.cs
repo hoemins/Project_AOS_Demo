@@ -136,7 +136,6 @@ public abstract class Champion : MonoBehaviour
     private void Start()
     {
         onLevelup += LevelUp;
-        onLevelup();
     }
 
     /// <summary>

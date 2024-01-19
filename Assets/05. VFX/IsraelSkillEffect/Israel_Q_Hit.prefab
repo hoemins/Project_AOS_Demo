@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198895433500004992}
   - component: {fileID: 199824939374261090}
   m_Layer: 0
-  m_Name: Hit 6
+  m_Name: Israel_Q_Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

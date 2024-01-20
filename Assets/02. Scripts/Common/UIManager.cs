@@ -28,6 +28,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] Inventory myInven;
     [SerializeField] TextMeshProUGUI myMoneyText;
     [SerializeField] SkillSlot[] skillSlots;
+    [SerializeField] Canvas levelUpTxtCanvas;
 
     public override void Awake()
     {
@@ -43,6 +44,12 @@ public class UIManager : Singleton<UIManager>
                     skillSlots[i].disabledLevelUpImg.gameObject.SetActive(true);
             }
             
+        };
+
+        myChampion.onLevelup += () => 
+        { 
+            levelUpTxtCanvas.gameObject.SetActive(true);
+            levelUpTxtCanvas.transform.position = Vector3.Lerp(transform.position, new Vector3(0, 0.5f, 0), 0.5f);
         };
     }
 
@@ -72,7 +79,7 @@ public class UIManager : Singleton<UIManager>
 
         myProfile.sprite = myChampion.ChampionInfo.ProfileImg;
         myLevelText.text = myChampion.ChampionInfo.Level.ToString();
-        
+        levelUpTxtCanvas.gameObject.SetActive(false);
     }
    
 

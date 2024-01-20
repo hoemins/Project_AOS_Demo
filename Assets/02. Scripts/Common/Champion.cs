@@ -103,6 +103,7 @@ public abstract class Champion : MonoBehaviour
     public List<Skill> SkillList { get {  return skillList; } }
     public Animator Anim { get { return anim; } }
     public DetectComponent DetectComponent { get { return detectComponent; } }
+    public StateMachine<Champion> StateMachine { get { return stateMachine; } }
 
     public int CurExp 
     { 

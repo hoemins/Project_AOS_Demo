@@ -8,6 +8,7 @@ public class ChampionAttackController : MonoBehaviour, IAttackable
     [SerializeField] AutoAttack autoAttack;
     [SerializeField] Champion owner;
 
+    public AutoAttack AutoAttack { get { return autoAttack; } }
     
     private void Start()
     {
@@ -17,7 +18,7 @@ public class ChampionAttackController : MonoBehaviour, IAttackable
 
     public void Attack()
     {
-        throw new System.NotImplementedException();
+        owner.StateMachine.SetState((int)CHAMPION_STATE.ATTACK);
     }
 
 

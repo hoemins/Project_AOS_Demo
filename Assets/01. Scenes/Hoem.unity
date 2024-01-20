@@ -25213,7 +25213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &802754590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25236,6 +25236,7 @@ MonoBehaviour:
   - objName: Israel_Q_Hit
     prefab: {fileID: 1021820888038418, guid: 1481ad71344498d429db3dfdd7bda62a, type: 3}
     count: 2
+  poolObjParent: {fileID: 360665266118518281}
 --- !u!4 &802754591
 Transform:
   m_ObjectHideFlags: 0
@@ -25244,7 +25245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802754589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -96.8, y: 6.4, z: -66.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66436,7 +66437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c834f6ca543f57244beab9c5a52e00fa, type: 2}
-  range: 8
+  range: 9
 --- !u!1 &2410598650064520911
 GameObject:
   m_ObjectHideFlags: 0
@@ -68468,8 +68469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8284e63d765c774d931de3da515121a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 120
-  skillObject: {fileID: 1519322442116508, guid: 8f605a00280b16b43bb4b0babb6b61fd, type: 3}
 --- !u!4 &4290831292251728404
 Transform:
   m_ObjectHideFlags: 0
@@ -71132,8 +71131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8284e63d765c774d931de3da515121a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 180
-  skillObject: {fileID: 1449260960837898, guid: f48a8770dbb43d047be2ddbb7a99bd71, type: 3}
 --- !u!222 &7248277121517455954
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -72447,8 +72444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8284e63d765c774d931de3da515121a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
-  skillObject: {fileID: 1033026374199576, guid: 6795a73db5c0c504e9d24ebebb7baece, type: 3}
 --- !u!1 &7901174573905869833
 GameObject:
   m_ObjectHideFlags: 0
@@ -74070,8 +74065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8284e63d765c774d931de3da515121a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 60
-  skillObject: {fileID: 1585743060672840, guid: b0948e2441921d44d9655a099f609aa0, type: 3}
 --- !u!4 &9106084702898905003
 Transform:
   m_ObjectHideFlags: 0

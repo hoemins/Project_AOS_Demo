@@ -65,7 +65,7 @@ public class UIManager : Singleton<UIManager>
         myStatsText[1].text = myChampion.ChampionInfo.AbilityAtk.ToString();
         myStatsText[2].text = myChampion.ChampionInfo.PhsicalDef.ToString();
         myStatsText[3].text = myChampion.ChampionInfo.MagicalResistance.ToString();
-        myStatsText[4].text = myChampion.ChampionInfo.PhysicalAtkDelay.ToString();
+        myStatsText[4].text = (myChampion.ChampionInfo.PhysicalAtkDelay*10).ToString();
         myStatsText[5].text = (myChampion.ChampionInfo.CriticalChance*100).ToString();
         myStatsText[6].text = myChampion.ChampionInfo.AbilityHaste.ToString();
         myStatsText[7].text = (myChampion.ChampionInfo.MoveSpeed*10).ToString();

@@ -1,3 +1,4 @@
+using Hoemin;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class Israel_QSkill : Skill
 {
+    [SerializeField] private GameObject effect;
     public override void InvokeSkill()
     {
         if (IsCool)
@@ -16,7 +18,8 @@ public class Israel_QSkill : Skill
         IsCool = true;
         Owner.ChampionStats.CurMp -= Data.comsumeMP;
         Owner.Anim.Play("Qskill");
-        Instantiate(Data.skillEffect[0], Owner.transform.position + Vector3.forward * 0.5f, Quaternion.identity);
+        effect.SetActive(true);
+
         StartCoroutine(DelayCor());
         StartCoroutine(CoolTimeCor());
     }
@@ -50,7 +53,7 @@ public class Israel_QSkill : Skill
     {
         if (Owner.SkillList[0].Data.level > 5) return;
         Owner.SkillList[0].Data.level++;
-        Owner.SkillList[0].gameObject.GetComponent<SkillAttack>().Damage += 30;
+        //Owner.SkillList[0].gameObject.GetComponent<SkillAttack>().Damage += 30;
         Owner.SkillList[0].Data.coolTime *= 0.7f;
     }
 }

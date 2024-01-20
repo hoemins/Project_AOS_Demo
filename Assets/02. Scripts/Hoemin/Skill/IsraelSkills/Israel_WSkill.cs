@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Israel_WSkill : Skill
 {
-
+    [SerializeField] private GameObject effect;
 
     public override void InvokeSkill()
     {
@@ -18,7 +18,7 @@ public class Israel_WSkill : Skill
         IsCool = true;
         Owner.ChampionStats.CurMp -= Data.comsumeMP;
         Owner.Anim.Play("Wskill");
-        Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
+        effect.SetActive(true);
         StartCoroutine(DelayCor());
         StartCoroutine(CoolTimeCor());
     }
@@ -29,7 +29,6 @@ public class Israel_WSkill : Skill
         Owner.MoveController.Agent.ResetPath();
         yield return new WaitForSeconds(0.5f);
         Owner.MoveController.Agent.isStopped = false;
-
     }
     public IEnumerator CoolTimeCor()
     {
@@ -53,7 +52,7 @@ public class Israel_WSkill : Skill
     {
         if (Owner.SkillList[1].Data.level > 5) return;
         Owner.SkillList[1].Data.level++;
-        Owner.SkillList[1].gameObject.GetComponent<SkillAttack>().Damage += 30;
+        //Owner.SkillList[1].gameObject.GetComponent<SkillAttack>().Damage += 30;
         Owner.SkillList[1].Data.coolTime *= 0.7f;
     }
 }

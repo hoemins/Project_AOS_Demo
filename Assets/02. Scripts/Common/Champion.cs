@@ -91,6 +91,7 @@ public abstract class Champion : MonoBehaviour
     public int skillPoint = 1;
     private Animator anim;
     private StateMachine<Champion> stateMachine;
+    private DetectComponent detectComponent;
     public Action onLevelup;
     public Action onDie;
     //=============================프로퍼티======================================//
@@ -101,6 +102,8 @@ public abstract class Champion : MonoBehaviour
     public ChampionStats ChampionStats { get { return championStats; } }
     public List<Skill> SkillList { get {  return skillList; } }
     public Animator Anim { get { return anim; } }
+    public DetectComponent DetectComponent { get { return detectComponent; } }
+
     public int CurExp 
     { 
         get { return curExp; } 
@@ -129,6 +132,7 @@ public abstract class Champion : MonoBehaviour
     public virtual void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        detectComponent = GetComponent<DetectComponent>();
         InitState();
         InitChampionInfo();
         

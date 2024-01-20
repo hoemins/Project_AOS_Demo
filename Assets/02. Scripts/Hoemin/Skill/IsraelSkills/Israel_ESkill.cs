@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Israel_ESkill : Skill
 {
+    
+    [SerializeField] private float range = 8f;
+    [SerializeField] private GameObject effect;
     Ray ray;
     RaycastHit hit;
-    [SerializeField] private float range = 8f;
-
     private void Update()
     {
+       
         ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
         
-        // 이 비어있는 조건문이 있어야 올바르게 작동
-        // 이유..? 모르겠음
+        
         if (Physics.Raycast(ray, out hit))
         {
-            
+            // 이 비어있는 조건문이 있어야 올바르게 작동
+            // 이유..? 모르겠음
         }
     }
 
@@ -25,19 +27,23 @@ public class Israel_ESkill : Skill
     {
         if (IsCool)
         {
-            Debug.Log("쿨타임중");
             return;
         }
 
         if (Vector3.Distance(Owner.transform.position, hit.transform.position) > range)
             return;
 
+        
 
         IsCool = true;
         Owner.ChampionStats.CurMp -= Data.comsumeMP;
         Owner.Anim.Play("Eskill");
-        Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
-        Instantiate(Data.skillEffect[1], Owner.transform.position, Quaternion.identity);
+
+        if (Owner.DetectComponent.IsDetected == true)
+        {
+            effect.SetActive(true);
+        }
+        
 
         Owner.transform.position = hit.point;
 
@@ -75,7 +81,7 @@ public class Israel_ESkill : Skill
     {
         if (Owner.SkillList[2].Data.level > 5) return;
         Owner.SkillList[2].Data.level++;
-        Owner.SkillList[2].gameObject.GetComponent<SkillAttack>().Damage += 30;
+        //Owner.SkillList[2].gameObject.GetComponent<SkillAttack>().Damage += 30;
         Owner.SkillList[2].Data.coolTime *= 0.7f;
     }
 }

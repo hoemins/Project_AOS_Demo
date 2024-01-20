@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class ChampionAttackController : MonoBehaviour, IAttackable
 {
-    Champion champion;
-    IHitable target;
+    [SerializeField] private GameObject eftPrefab;
+    [SerializeField] AutoAttack autoAttack;
+    [SerializeField] Champion owner;
 
+    
     private void Start()
     {
-        champion = GetComponent<Champion>();
+        owner = GetComponent<Champion>();
+        autoAttack = GetComponent<AutoAttack>();
     }
 
     public void Attack()
     {
-        
-        Debug.Log("기본 공격 발싸");
+        throw new System.NotImplementedException();
     }
+
+
 
 }

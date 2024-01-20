@@ -28,13 +28,11 @@ namespace Hoemin
             }
 
             if (owner.SkillList[index].IsCool) return;
-            Debug.Log("스킬 조준 표시");
             indicators[index].SetActive(true);
         }
 
         public void EraseIndicator(int index)
         {
-            Debug.Log("스킬 조준 취소");
             indicators[index].SetActive(false);
         }
     }

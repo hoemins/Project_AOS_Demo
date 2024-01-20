@@ -17,7 +17,6 @@ public class SkillData : ScriptableObject, ISerializationCallbackReceiver
     public int comsumeMP;
     public float coolTime;
     
-    public GameObject[] skillEffect;
 
     public void OnAfterDeserialize()
     {

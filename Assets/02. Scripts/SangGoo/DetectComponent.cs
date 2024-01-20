@@ -28,4 +28,10 @@ public class DetectComponent : MonoBehaviour, IDetectable
     {
         colliders = Physics.OverlapSphere(transform.position, DetectRange, layerMask);
     }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, DetectRange);
+    }
 }

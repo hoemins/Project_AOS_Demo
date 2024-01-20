@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Israel_RSkill : Skill
 {
-
+    [SerializeField] private GameObject effect;
 
     public override void InvokeSkill()
     {
@@ -17,7 +17,7 @@ public class Israel_RSkill : Skill
         IsCool = true;
         Owner.ChampionStats.CurMp -= Data.comsumeMP;
         Owner.Anim.Play("Rskill");
-        Instantiate(Data.skillEffect[0], Owner.transform.position, Quaternion.identity);
+        effect.SetActive(true);
         StartCoroutine(DelayCor());
         StartCoroutine(CoolTimeCor());
     }
@@ -50,6 +50,6 @@ public class Israel_RSkill : Skill
     {
         if (Owner.SkillList[3].Data.level > 3) return;
         Owner.SkillList[3].Data.level++;
-        Owner.SkillList[3].gameObject.GetComponent<SkillAttack>().Damage += 30;
+        //Owner.SkillList[3].gameObject.GetComponent<SkillAttack>().Damage += 30;
     }
 }

@@ -3,53 +3,77 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using System;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.DebugUI.Table;
+using Unity.Burst.CompilerServices;
 
 
 /// <summary>
-/// 이펙트 생성을 담당하는 클래스 , 기본적으로 오브젝트 풀로 구현하려함
-/// 참고한 자료에서는 Player 스크립트 역할
+/// 이펙트 생성을 담당하는 클래스
 /// </summary>
 public class SkillEffectCreator : MonoBehaviour
 {
     [SerializeField] private GameObject flashEffectObj;
     [SerializeField] private GameObject hitEffectObj;
     [SerializeField] private GameObject[] detachedObj;
+    SkillEffectMover skillEffectMover;
+    SkillEffectGuidedMovement skillEffectGuided;
 
+    private void Start()
+    {
+        skillEffectMover = GetComponent<SkillEffectMover>();
+        skillEffectGuided = GetComponent<SkillEffectGuidedMovement>();
+        CreateFlashEffect();
 
+        if(skillEffectMover != null)
+        {
+            skillEffectMover.onHit += CreateHitEffect;
+        }
+        if(skillEffectGuided != null)
+        {
+            skillEffectGuided.onHit += CreateHitEffect;
+        }
+        
+        
+    }
 
-    public void CreateFlashEffect(GameObject flashEffect)
+    public void CreateFlashEffect()
     {
         if (flashEffectObj != null)
         {
-            GameObject flashInstance = Instantiate(flashEffectObj, transform.position, Quaternion.identity);
-            flashInstance.transform.forward = gameObject.transform.forward;
-            ParticleSystem flashPs = flashInstance.GetComponent<ParticleSystem>();
+            flashEffectObj.SetActive(true);
+            Debug.Log("프랠시");
+
+            flashEffectObj.transform.forward = gameObject.transform.forward;
+            ParticleSystem flashPs = flashEffectObj.GetComponent<ParticleSystem>();
             if (flashPs != null)
             {
-                Destroy(flashInstance, flashPs.main.duration);
+                SetActiveCor(flashEffectObj, flashPs.main.duration);
             }
             else
             {
-                ParticleSystem flashPsParts = flashInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(flashInstance, flashPsParts.main.duration);
+                ParticleSystem flashPsParts = flashEffectObj.transform.GetChild(0).GetComponent<ParticleSystem>();
+                SetActiveCor(flashEffectObj, flashPsParts.main.duration);
             }
         }
     }
 
-    public void CreateHitEffect(GameObject hitEffect)
+    public void CreateHitEffect()
     {
         if (hitEffectObj != null)
         {
-            var hitInstance = Instantiate(hitEffectObj, transform.position, Quaternion.identity);
-            var hitPs = hitInstance.GetComponent<ParticleSystem>();
+            hitEffectObj.SetActive(true);
+            //var hitInstance = Instantiate(hitEffectObj,transform.position,Quaternion.identity);
+            Debug.Log("처맞아서 생김");           
+            var hitPs = hitEffectObj.GetComponent<ParticleSystem>();
             if (hitPs != null)
             {
-                Destroy(hitInstance, hitPs.main.duration);
+                SetActiveCor(hitEffectObj, hitPs.main.duration);
             }
             else
             {
-                var hitPsParts = hitInstance.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(hitInstance, hitPsParts.main.duration);
+                var hitPsParts = hitEffectObj.transform.GetChild(0).GetComponent<ParticleSystem>();
+                SetActiveCor(hitEffectObj, hitPsParts.main.duration);
             }
             foreach (var detachedPrefab in detachedObj)
             {
@@ -58,8 +82,20 @@ public class SkillEffectCreator : MonoBehaviour
                     detachedPrefab.transform.parent = null;
                 }
             }
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator SetActiveCor(GameObject go,float time)
+    {
+        yield return new WaitForSeconds(time);
+        go.SetActive(false);
+        Transform firePosition;
+
+        if (skillEffectGuided != null) firePosition = skillEffectGuided.FirePos;
+        else firePosition=skillEffectMover.FirePos;
+
+        go.transform.position = firePosition.position;
     }
 
 }

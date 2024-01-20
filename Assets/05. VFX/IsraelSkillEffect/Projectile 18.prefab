@@ -10,17 +10,18 @@ GameObject:
   m_Component:
   - component: {fileID: 4214851923150842}
   - component: {fileID: 198841165711007980}
-  - component: {fileID: 4808112551926112208}
   - component: {fileID: 199029229939319142}
   - component: {fileID: 54508532002122222}
   - component: {fileID: 135895367616126662}
+  - component: {fileID: 6946530810700980697}
+  - component: {fileID: -4671008615348293449}
   m_Layer: 0
   m_Name: Projectile 18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4214851923150842
 Transform:
   m_ObjectHideFlags: 0
@@ -51,7 +52,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4813,30 +4814,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &4808112551926112208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585743060672840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c768e2338a27b94b8fbdf678dabd7ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  skillRange: 20
-  hitOffset: 0.1
-  useFirePointRotation: 0
-  rotationOffset: {x: 0, y: 0, z: 0}
-  hitEffectObj: {fileID: 1088318192215600, guid: fcb7ef11e81f7264990b58f26051651b, type: 3}
-  flashEffectObj: {fileID: 1851657805948188, guid: 48e0fabf2b2853a41aea1b678a158ae5, type: 3}
-  detached: []
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  firePos: {x: 0, y: 0, z: 0}
 --- !u!199 &199029229939319142
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4859,7 +4836,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9f786ae76c9c9754d927483cb4a005c9, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4939,3 +4915,33 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6946530810700980697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585743060672840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68f48cdb5326fe4696eca2173614030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashEffectObj: {fileID: 1851657805948188, guid: 48e0fabf2b2853a41aea1b678a158ae5, type: 3}
+  hitEffectObj: {fileID: 1088318192215600, guid: fcb7ef11e81f7264990b58f26051651b, type: 3}
+  detachedObj: []
+--- !u!114 &-4671008615348293449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585743060672840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ad5e6a62b3e694c9d0327965cca3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  targetTransform: {fileID: 0}
+  speed: 0

@@ -46,12 +46,10 @@ public class UIManager : Singleton<UIManager>
             
         };
 
-        myChampion.onLevelup += () => 
-        { 
-            levelUpTxtCanvas.gameObject.SetActive(true);
-            levelUpTxtCanvas.transform.position = Vector3.Lerp(transform.position, new Vector3(0, 0.5f, 0), 0.5f);
-        };
+        
     }
+
+    
 
     private void Update()
     {

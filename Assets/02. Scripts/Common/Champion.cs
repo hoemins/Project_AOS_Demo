@@ -94,6 +94,7 @@ public abstract class Champion : MonoBehaviour
     private DetectComponent detectComponent;
     public Action onLevelup;
     public Action onDie;
+
     //=============================프로퍼티======================================//
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } }
     public ChampionMoveController MoveController { get { return moveController; } }

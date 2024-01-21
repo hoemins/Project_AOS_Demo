@@ -25,6 +25,7 @@ public class SkillEffectMover : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        onHit += () => { gameObject.transform.SetParent(firePos); };
     }
 
     private void Update()

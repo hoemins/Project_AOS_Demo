@@ -5,8 +5,8 @@ using UnityEngine;
 public class ChampionAttackController : MonoBehaviour, IAttackable
 {
     [SerializeField] private GameObject eftPrefab;
-    [SerializeField] AutoAttack autoAttack;
-    [SerializeField] Champion owner;
+    AutoAttack autoAttack;
+    Champion owner;
 
     public AutoAttack AutoAttack { get { return autoAttack; } }
     

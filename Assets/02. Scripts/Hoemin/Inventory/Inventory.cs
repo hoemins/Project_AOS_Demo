@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
         itemSlots = GetComponentsInChildren<ItemSlot>();
     }
 
-    public void AddItem(Item newItem)
+    public void AddItem(ItemDataSO newItem)
     {
         for(int i = 0; i < itemSlots.Length; i++)
         {

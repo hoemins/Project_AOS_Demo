@@ -7,14 +7,21 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     [SerializeField] private Image itemImage;
-    [SerializeField] private Item item;
+    [SerializeField] private TextMeshProUGUI priceTxt;
+    [SerializeField] private ItemDataSO item;
 
-    public Item Item { get { return item; } }
+    public ItemDataSO Item { get { return item; } }
 
-    public void SetItem(Item item)
+    private void Start()
+    {
+        itemImage.sprite = item.itemImg;
+        priceTxt.text = item.price.ToString();
+    }
+
+    public void SetItem(ItemDataSO item)
     {
         this.item = item;
-        itemImage.sprite = item.Data.itemImg;
+        itemImage.sprite = item.itemImg;
     }
     
 }

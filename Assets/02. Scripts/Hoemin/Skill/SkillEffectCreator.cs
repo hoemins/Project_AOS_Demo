@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using System;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.Rendering.DebugUI.Table;
-using Unity.Burst.CompilerServices;
-
 
 /// <summary>
 /// 이펙트 생성을 담당하는 클래스
@@ -62,18 +58,18 @@ public class SkillEffectCreator : MonoBehaviour
     {
         if (hitEffectObj != null)
         {
-            hitEffectObj.SetActive(true);
-            //var hitInstance = Instantiate(hitEffectObj,transform.position,Quaternion.identity);
+            //hitEffectObj.SetActive(true);
+            var hitInstance = Instantiate(hitEffectObj,transform.position,Quaternion.identity);
             Debug.Log("처맞아서 생김");           
-            var hitPs = hitEffectObj.GetComponent<ParticleSystem>();
+            var hitPs = hitInstance.GetComponent<ParticleSystem>();
             if (hitPs != null)
             {
-                SetActiveCor(hitEffectObj, hitPs.main.duration);
+                SetActiveCor(hitInstance, hitPs.main.duration);
             }
             else
             {
                 var hitPsParts = hitEffectObj.transform.GetChild(0).GetComponent<ParticleSystem>();
-                SetActiveCor(hitEffectObj, hitPsParts.main.duration);
+                SetActiveCor(hitInstance, hitPsParts.main.duration);
             }
             foreach (var detachedPrefab in detachedObj)
             {

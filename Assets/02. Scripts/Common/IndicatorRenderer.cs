@@ -28,6 +28,7 @@ namespace Hoemin
             }
 
             if (owner.SkillList[index].IsCool) return;
+
             indicators[index].SetActive(true);
         }
 

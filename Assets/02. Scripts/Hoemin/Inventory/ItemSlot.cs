@@ -14,8 +14,21 @@ public class ItemSlot : MonoBehaviour
 
     private void Start()
     {
-        itemImage.sprite = item.itemImg;
-        priceTxt.text = item.price.ToString();
+        InitSlot();
+        
+    }
+
+    private void InitSlot()
+    {
+        if (itemImage != null)
+        {
+            itemImage.sprite = item.itemImg;
+        }
+
+        if (priceTxt != null)
+        {
+            priceTxt.text = item.price.ToString();
+        }
     }
 
     public void SetItem(ItemDataSO item)

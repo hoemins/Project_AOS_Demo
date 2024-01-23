@@ -1,6 +1,7 @@
 using Hoemin;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // 커맨드 패턴의 Receiver 클래스 (이전 : PlayerInput)
@@ -42,6 +43,7 @@ public class CommandInputManager : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 invoker.UndoCommand();
+                
             }
         }
     }

@@ -27,7 +27,7 @@ public class ItemSlot : MonoBehaviour
 
         if (priceTxt != null)
         {
-            priceTxt.text = item.price.ToString();
+            priceTxt.text = item.buyPrice.ToString();
         }
     }
 

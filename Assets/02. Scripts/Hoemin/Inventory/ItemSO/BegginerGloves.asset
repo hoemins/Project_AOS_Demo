@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52662e0a2dc1c9c4f9bcb6dc57497299, type: 3}
   m_Name: BegginerGloves
   m_EditorClassIdentifier: 
-  itemImg: {fileID: 21300000, guid: 90714885e975c6c4b960e09ae207001c, type: 3}
-  itemName: Gloves
-  rank: Begginer
-  price: 350
+  itemImg: {fileID: 21300000, guid: a959ba56c2e905e4697877f932b2e443, type: 3}
+  itemName: IceSword
+  rank: Epic
+  buyPrice: 0
+  sellPrice: 0

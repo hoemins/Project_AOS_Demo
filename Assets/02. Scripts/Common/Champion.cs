@@ -46,7 +46,6 @@ public class ChampionStats
     [SerializeField] private int curMp;
     [SerializeField] private int maxMp;
 
-
     public int MaxHp { get { return maxHp; } set { maxHp = value; } }
     public int MaxMp { get {  return maxMp; } set { maxMp = value; } }
     public int CurHp 
@@ -67,9 +66,6 @@ public class ChampionStats
             curMp = value;
         }
     }
-
-    
-
 }
 
 
@@ -128,7 +124,6 @@ public abstract class Champion : MonoBehaviour
     }
     //===========================================================================//
 
-
     // 문제점 : Awake 함수 호출 순서 때문에 NullRef 에러 발생
     // 해결 : ProjectSetting -> Script Excution order 탭에서 호출 순서 커스텀
     public virtual void Awake()
@@ -137,7 +132,6 @@ public abstract class Champion : MonoBehaviour
         detectComponent = GetComponent<DetectComponent>();
         InitState();
         InitChampionInfo();
-        
     }
     private void Start()
     {
@@ -148,10 +142,7 @@ public abstract class Champion : MonoBehaviour
     /// 챔피언 기본 정보 초기화
     /// </summary>
     public abstract void InitChampionInfo();
-
     public abstract void InitChampionStats();
-
-
     public abstract Skill GetSkill(int index);
 
     public void LevelUp()
@@ -162,7 +153,6 @@ public abstract class Champion : MonoBehaviour
         AimExp = championinfo.Level * 200;
         Debug.Log("렙업");
     }
-
     /// <summary>
     /// 상태 머신 초기화
     /// </summary>
@@ -178,7 +168,6 @@ public abstract class Champion : MonoBehaviour
         stateMachine.SetState((int)CHAMPION_STATE.IDLE);
         curState = CHAMPION_STATE.IDLE;
     }
-
     public void Update()
     {
         stateMachine.Update();

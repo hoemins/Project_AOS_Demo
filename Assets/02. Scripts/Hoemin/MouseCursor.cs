@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Hoemin
 {
@@ -12,6 +13,8 @@ namespace Hoemin
     {
         [SerializeField] Texture2D arrowImg;
         [SerializeField] Texture2D swordImg;
+
+
 
         void Start()
         {

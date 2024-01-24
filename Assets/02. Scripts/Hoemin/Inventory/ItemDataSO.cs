@@ -16,4 +16,6 @@ public class ItemDataSO : ScriptableObject
     public string itemName;
     public int buyPrice;
     public int sellPrice;
+
+    public Dictionary<List<ItemDataSO>, ItemDataSO> itemCombinationDic;
 }

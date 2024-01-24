@@ -6,19 +6,34 @@ using UnityEngine.EventSystems;
 
 public class Shop : MonoBehaviour, IPointerClickHandler
 {
-    MouseCursor cursor;
-    [SerializeField] Canvas shopCanvas;
+    [SerializeField] ItemShopUI itemShop;
     DetectComponent detectComponent;
 
     private void Start()
     {
         detectComponent = GetComponent<DetectComponent>();
-        shopCanvas.gameObject.SetActive(false);
+        itemShop.gameObject.SetActive(false);
     }
+
+    public void OpenShop()
+    {
+        if (detectComponent.IsDetected)
+            itemShop.gameObject.SetActive(true);
+    }
+
+    public void ExitShop()
+    {
+        itemShop.gameObject?.SetActive(false);
+    }
+
+    public void SellItem()
+    {
+        
+    }
+
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(detectComponent.IsDetected)
-            shopCanvas.gameObject.SetActive(true);
+        OpenShop();
     }
 }

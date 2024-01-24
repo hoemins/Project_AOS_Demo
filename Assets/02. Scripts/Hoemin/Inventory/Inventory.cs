@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     {
         for(int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i].Item == null)
+            if (itemSlots[i].ItemData == null)
             {
                 itemSlots[i].SetItem(newItem);
                 return;

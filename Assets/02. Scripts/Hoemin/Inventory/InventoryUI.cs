@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] Champion owner;
     [SerializeField] TextMeshProUGUI goldText;
     ItemSlot[] itemSlots = null;
 
@@ -13,6 +12,7 @@ public class Inventory : MonoBehaviour
     {
         itemSlots = GetComponentsInChildren<ItemSlot>();
     }
+
 
     public void AddItem(ItemDataSO newItem)
     {

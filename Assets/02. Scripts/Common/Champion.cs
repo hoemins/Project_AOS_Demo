@@ -2,7 +2,6 @@ using Hoemin;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // 해당 클래스의 멤버를 인스펙터에 노출시킴
@@ -22,6 +21,7 @@ public class ChampionInfo
     [SerializeField] private int abilityHaste; // 스킬 가속
     [SerializeField] private float moveSpeed; // 이동 속도
     [SerializeField] private float criticalChance; // 치명타 확률
+    [SerializeField] private int gold;
 
     public string Name { get { return name; } set { name = value; } }
     public int Level { get { return level; } set { level = (level >= 18) ? 18 : value; } }
@@ -36,6 +36,7 @@ public class ChampionInfo
     public int AbilityHaste { get { return abilityHaste; } set { abilityHaste = value; } }
     public float MoveSpeed { get {  return moveSpeed; } set { moveSpeed = value; } }
     public float CriticalChance { get { return criticalChance; } set { criticalChance = value; } }
+    public int Gold { get { return gold; } set { gold = value; } }
 }
 
 [Serializable]
@@ -84,6 +85,7 @@ public abstract class Champion : MonoBehaviour
     [SerializeField] protected List<Skill> skillList;
     [SerializeField] private int curExp;
     [SerializeField] private int aimExp;
+    [SerializeField] InventoryUI inventoryUI;
     public int skillPoint = 1;
     private Animator anim;
     private StateMachine<Champion> stateMachine;
@@ -91,6 +93,7 @@ public abstract class Champion : MonoBehaviour
     public Action onLevelup;
     public Action onDie;
 
+    #region 프로퍼티
     //=============================프로퍼티======================================//
     public CHAMPION_STATE CurState { get { return curState; } set { curState = value; } }
     public ChampionMoveController MoveController { get { return moveController; } }
@@ -123,6 +126,7 @@ public abstract class Champion : MonoBehaviour
         } 
     }
     //===========================================================================//
+    #endregion
 
     // 문제점 : Awake 함수 호출 순서 때문에 NullRef 에러 발생
     // 해결 : ProjectSetting -> Script Excution order 탭에서 호출 순서 커스텀
@@ -130,6 +134,7 @@ public abstract class Champion : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         detectComponent = GetComponent<DetectComponent>();
+
         InitState();
         InitChampionInfo();
     }
@@ -168,8 +173,21 @@ public abstract class Champion : MonoBehaviour
         stateMachine.SetState((int)CHAMPION_STATE.IDLE);
         curState = CHAMPION_STATE.IDLE;
     }
+
     public void Update()
     {
         stateMachine.Update();
     }
+
+    public void BuyItem(ItemDataSO item)
+    {
+        if (item.buyPrice <= ChampionInfo.Gold)
+        {
+            ChampionInfo.Gold -= item.buyPrice;
+            inventoryUI.AddItem(item);
+        }
+        else
+            return;
+    }
+
 }

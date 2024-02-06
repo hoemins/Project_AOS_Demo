@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public abstract class ItemSlot : MonoBehaviour
 {
-    [SerializeField] protected Image itemImage;
+    [SerializeField] protected Image itemImg;
     [SerializeField] protected ItemDataSO itemData;
-
     public ItemDataSO ItemData { get { return itemData; } set { itemData = value; } }
-    
-    public abstract void InitShopSlot();
+    public Image ItemImg { get { return itemImg; } set { itemImg = value; } }
 
+    private void Awake()
+    {
+        InitSlot();
+    }
 
-    public abstract void SetItem(ItemDataSO item);
-
-
+    public abstract void InitSlot();
+    public abstract void SetSlot(ItemDataSO item);
 }

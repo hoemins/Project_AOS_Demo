@@ -179,15 +179,6 @@ public abstract class Champion : MonoBehaviour
         stateMachine.Update();
     }
 
-    public void BuyItem(ItemDataSO item)
-    {
-        if (item.buyPrice <= ChampionInfo.Gold)
-        {
-            ChampionInfo.Gold -= item.buyPrice;
-            inventoryUI.AddItem(item);
-        }
-        else
-            return;
-    }
+ 
 
 }

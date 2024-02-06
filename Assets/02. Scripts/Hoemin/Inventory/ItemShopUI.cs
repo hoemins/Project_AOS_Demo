@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class ItemShopUI : MonoBehaviour
 {
-    [SerializeField] Shop Owner;
-    public List<ItemList> lists;
-    public ShopSlot choicedSlot;
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        choicedSlot.onSelect += ChoiceSlot;
+        
     }
 
-    public void ChoiceSlot(ShopSlot slot)
+    // Update is called once per frame
+    void Update()
     {
-        choicedSlot = slot;
+        
     }
 }

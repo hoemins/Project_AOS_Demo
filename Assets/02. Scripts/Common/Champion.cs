@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.VolumeComponent;
 
 // 해당 클래스의 멤버를 인스펙터에 노출시킴
 [Serializable]
@@ -85,7 +86,7 @@ public abstract class Champion : MonoBehaviour
     [SerializeField] protected List<Skill> skillList;
     [SerializeField] private int curExp;
     [SerializeField] private int aimExp;
-    [SerializeField] InventoryUI inventoryUI;
+    [SerializeField] InventoryUI inven;
     public int skillPoint = 1;
     private Animator anim;
     private StateMachine<Champion> stateMachine;
@@ -179,6 +180,16 @@ public abstract class Champion : MonoBehaviour
         stateMachine.Update();
     }
 
- 
+    public void TryBuyItem(ItemDataSO item)
+    {
+        if (item.buyPrice > championinfo.Gold)
+        {
+            Debug.Log("돈이 없어서 못사요 ㅜㅜ");
+            return;
+        }
+        championinfo.Gold -= item.buyPrice;
+        Debug.Log(item.name);
+        inven.AddItem(item);
+    }
 
 }

@@ -26,11 +26,6 @@ public class Shop : MonoBehaviour, IPointerClickHandler
         itemShop.gameObject?.SetActive(false);
     }
 
-    public void SellItem()
-    {
-        
-    }
-
 
     public void OnPointerClick(PointerEventData eventData)
     {

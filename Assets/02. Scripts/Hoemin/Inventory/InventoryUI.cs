@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] InvenItemSlot[] invenItemSlots = null;
+    [SerializeField] TextMeshProUGUI goldTxt;
 
-    // Update is called once per frame
-    void Update()
+    public void AddItem(ItemDataSO item)
     {
-        
+        for (int i = 0; i < invenItemSlots.Length; i++)
+        {
+            if (invenItemSlots[i].ItemData == null)
+            {
+                invenItemSlots[i].SetSlot(item);
+                return;
+            }
+        }
     }
 }

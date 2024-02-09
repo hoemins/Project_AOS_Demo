@@ -63,6 +63,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImg: {fileID: 4885412364005555440}
   itemData: {fileID: 0}
+  priceTxt: {fileID: 8765926982100694579}
+  itemNameTxt: {fileID: 0}
 --- !u!114 &6429085177817455337
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class ShopItemSlot : ItemSlot
 {
-    private TextMeshProUGUI priceTxt;
+    [SerializeField] private TextMeshProUGUI priceTxt;
+    [SerializeField] private TextMeshProUGUI itemNameTxt;
 
 
     public override void InitSlot()
     {
         itemImg = GetComponentInChildren<Image>();
-        priceTxt = GetComponentInChildren<TextMeshProUGUI>();
     }
 
 
@@ -20,6 +20,10 @@ public class ShopItemSlot : ItemSlot
     {
         itemImg.sprite = item.itemImg;
         priceTxt.text = item.buyPrice.ToString();
+        if(itemNameTxt != null )
+        {
+            itemNameTxt.text = item.itemName;
+        }
     }
 
 

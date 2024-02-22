@@ -29,7 +29,6 @@ public class Israel : Champion
         championinfo.AbilityHaste = 0;
         championinfo.CriticalChance = 0.15f;
         AimExp = championinfo.Level * 100;
-        championinfo.Gold = 1200;
 
     }
 

@@ -22,12 +22,12 @@ public class UIManager : Singleton<UIManager>
 
     [Header("³» Ã¨ÇÇ¾ð UI")]
     [SerializeField] Champion myChampion;
-    [SerializeField] TextMeshProUGUI[] myStatsText;
     [SerializeField] Image myProfile;
     [SerializeField] TextMeshProUGUI myLevelText;
     [SerializeField] InventoryUI myInven;
     [SerializeField] TextMeshProUGUI myMoneyText;
     [SerializeField] SkillSlot[] skillSlots;
+    [SerializeField] TextMeshProUGUI[] myStatsText;
     [SerializeField] Canvas levelUpTxtCanvas;
 
     public override void Awake()
@@ -46,7 +46,7 @@ public class UIManager : Singleton<UIManager>
             
         };
 
-        
+        myInven.onValueChange += () => { myMoneyText.text = myInven.Gold.ToString(); };
     }
 
     
@@ -77,6 +77,7 @@ public class UIManager : Singleton<UIManager>
 
         myProfile.sprite = myChampion.ChampionInfo.ProfileImg;
         myLevelText.text = myChampion.ChampionInfo.Level.ToString();
+        myMoneyText.text = myInven.Gold.ToString();
         levelUpTxtCanvas.gameObject.SetActive(false);
     }
    

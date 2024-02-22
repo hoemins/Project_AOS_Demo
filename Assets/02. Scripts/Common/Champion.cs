@@ -22,7 +22,6 @@ public class ChampionInfo
     [SerializeField] private int abilityHaste; // 스킬 가속
     [SerializeField] private float moveSpeed; // 이동 속도
     [SerializeField] private float criticalChance; // 치명타 확률
-    [SerializeField] private int gold;
 
     public string Name { get { return name; } set { name = value; } }
     public int Level { get { return level; } set { level = (level >= 18) ? 18 : value; } }
@@ -37,7 +36,6 @@ public class ChampionInfo
     public int AbilityHaste { get { return abilityHaste; } set { abilityHaste = value; } }
     public float MoveSpeed { get {  return moveSpeed; } set { moveSpeed = value; } }
     public float CriticalChance { get { return criticalChance; } set { criticalChance = value; } }
-    public int Gold { get { return gold; } set { gold = value; } }
 }
 
 [Serializable]
@@ -180,16 +178,17 @@ public abstract class Champion : MonoBehaviour
         stateMachine.Update();
     }
 
-    public void TryBuyItem(ItemDataSO item)
+    public bool TryBuyItem(ItemDataSO item)
     {
-        if (item.buyPrice > championinfo.Gold)
+        if (item.buyPrice > inven.Gold)
         {
             Debug.Log("돈이 없어서 못사요 ㅜㅜ");
-            return;
+            return false;
         }
-        championinfo.Gold -= item.buyPrice;
+        inven.Gold -= item.buyPrice;
         Debug.Log(item.name);
         inven.AddItem(item);
+        return true;
     }
 
 }

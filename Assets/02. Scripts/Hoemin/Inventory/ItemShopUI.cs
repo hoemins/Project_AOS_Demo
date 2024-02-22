@@ -6,8 +6,8 @@ public class ItemShopUI : MonoBehaviour
 {
     [SerializeField] List<ShopItemSlotList> shopSlotList; 
     [SerializeField] ShopItemSlot selectedSlot;
-
-
+    public AudioClip purchaseClip;
+    public AudioClip sellClip;
     public void SelectSlot(ShopItemSlot slot)
     {
         selectedSlot.ItemData = slot.ItemData;
@@ -16,6 +16,9 @@ public class ItemShopUI : MonoBehaviour
 
     public void SellItem(Champion player)
     {
-        player.TryBuyItem(selectedSlot.ItemData);
+        if (player.TryBuyItem(selectedSlot.ItemData))
+        {
+            SoundManager.instance.Play(purchaseClip);
+        }
     }
 }

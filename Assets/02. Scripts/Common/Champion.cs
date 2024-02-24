@@ -191,4 +191,9 @@ public abstract class Champion : MonoBehaviour
         return true;
     }
 
+
+    public void TrySellItem()
+    {
+        inven.RemoveItem();
+    }
 }

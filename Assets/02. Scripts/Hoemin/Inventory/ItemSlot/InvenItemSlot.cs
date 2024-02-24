@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class InvenItemSlot : ItemSlot
 {
+    [SerializeField] private bool isSelected = false;
+
+    public bool IsSeleted
+    {
+        get { return isSelected; }
+        set { isSelected = value; }
+    }
+
     public override void InitSlot()
     {
         itemImg = GetComponentInChildren<Image>();

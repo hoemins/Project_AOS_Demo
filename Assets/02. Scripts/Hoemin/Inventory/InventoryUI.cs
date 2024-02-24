@@ -6,7 +6,7 @@ using System;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] InvenItemSlot[] invenItemSlots = null;
+    [SerializeField] List<InvenItemSlot> invenItemSlots = null;
     [SerializeField] private int gold;
     public event Action onValueChange;
     public int Gold
@@ -25,7 +25,7 @@ public class InventoryUI : MonoBehaviour
 
     public void AddItem(ItemDataSO item)
     {
-        for (int i = 0; i < invenItemSlots.Length; i++)
+        for (int i = 0; i < invenItemSlots.Count; i++)
         {
             if (invenItemSlots[i].ItemData == null)
             {
@@ -35,4 +35,29 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
+    public void RemoveItem()
+    {
+        foreach(InvenItemSlot slot in invenItemSlots)
+        {
+            if(slot.IsSeleted == true)
+            {
+                gold += (int)(slot.ItemData.buyPrice * 0.7);
+                onValueChange?.Invoke();
+                slot.ItemImg.sprite = null;
+                slot.ItemData = null;
+            }
+        }
+    }
+
+    public void SelectSlot(int index)
+    {
+        if (invenItemSlots[index].ItemData == null)
+            return;
+        foreach(InvenItemSlot slot in invenItemSlots)
+        {
+            slot.IsSeleted = false;
+        }
+        invenItemSlots[index].IsSeleted = true;
+    }
+
 }

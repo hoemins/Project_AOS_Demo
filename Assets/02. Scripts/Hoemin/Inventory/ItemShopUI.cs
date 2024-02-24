@@ -6,8 +6,8 @@ public class ItemShopUI : MonoBehaviour
 {
     [SerializeField] List<ShopItemSlotList> shopSlotList; 
     [SerializeField] ShopItemSlot selectedSlot;
-    public AudioClip purchaseClip;
-    public AudioClip sellClip;
+    [SerializeField] AudioClip purchaseClip;
+    [SerializeField] AudioClip sellClip;
     public void SelectSlot(ShopItemSlot slot)
     {
         selectedSlot.ItemData = slot.ItemData;
